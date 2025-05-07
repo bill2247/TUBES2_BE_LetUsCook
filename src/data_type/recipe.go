@@ -1,6 +1,6 @@
 package data_type
 
-type Recipe struct {
-    First  int
-    Second int
+type Pair_recipe struct {
+    First  *RecipeTree
+    Second *RecipeTree
 }

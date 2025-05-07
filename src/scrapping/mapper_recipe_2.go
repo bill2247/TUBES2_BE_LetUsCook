@@ -1,6 +1,6 @@
 package scrapping
 
-import "src/data_type"
+import "let_us_cook/src/data_type"
 
 var MapperRecipe2 = map [data_type.Recipe] int {
                  {2, 9}: 0, 

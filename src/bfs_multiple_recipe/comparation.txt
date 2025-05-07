@@ -1,0 +1,117 @@
+// package bfs_multiple_recipe
+
+// import (
+// 	"fmt"
+// 	"sync"
+// 	"time"
+// 	"src/scrapping"
+// )
+
+// // Struktur pohon resep
+// type RecipeTree struct {
+// 	Name   string
+// 	Left   *RecipeTree
+// 	Right  *RecipeTree
+// }
+
+// // Sequential (tanpa concurrency)
+// func BuildTreeSequential(idx int, visited []bool) *RecipeTree {
+// 	if idx < 4 || visited[idx] {
+// 		return &RecipeTree{Name: scrapping.MapperElmIdx[idx]}
+// 	}
+// 	visited[idx] = true
+// 	node := &RecipeTree{Name: scrapping.MapperElmIdx[idx]}
+// 	recipes := scrapping.MapperRecipe1[idx]
+
+// 	if len(recipes) == 0 {
+// 		return node
+// 	}
+
+// 	// Ambil hanya resep pertama untuk pohon tunggal
+// 	node.Left = BuildTreeSequential(recipes[0].First, visited)
+// 	node.Right = BuildTreeSequential(recipes[0].Second, visited)
+// 	return node
+// }
+
+// // Concurrent (menggunakan goroutine)
+// func BuildTreeConcurrent(idx int, visited []bool, mu *sync.Mutex) *RecipeTree {
+// 	if idx < 4 {
+// 		return &RecipeTree{Name: scrapping.MapperElmIdx[idx]}
+// 	}
+
+// 	mu.Lock()
+// 	if visited[idx] {
+// 		name := scrapping.MapperElmIdx[idx]
+// 		mu.Unlock()
+// 		return &RecipeTree{Name: name}
+// 	}
+// 	visited[idx] = true
+// 	mu.Unlock()
+
+// 	node := &RecipeTree{Name: scrapping.MapperElmIdx[idx]}
+// 	recipes := scrapping.MapperRecipe1[idx]
+// 	if len(recipes) == 0 {
+// 		return node
+// 	}
+
+// 	var left, right *RecipeTree
+// 	var wg sync.WaitGroup
+// 	wg.Add(2)
+
+// 	go func() {
+// 		defer wg.Done()
+// 		left = BuildTreeConcurrent(recipes[0].First, visited, mu)
+// 	}()
+// 	go func() {
+// 		defer wg.Done()
+// 		right = BuildTreeConcurrent(recipes[0].Second, visited, mu)
+// 	}()
+
+// 	wg.Wait()
+// 	node.Left = left
+// 	node.Right = right
+// 	return node
+// }
+
+
+// // Display hasil tree
+// func DisplayTree(node *RecipeTree, depth int) {
+// 	if node == nil {
+// 		return
+// 	}
+// 	indent := ""
+// 	for i := 0; i < depth; i++ {
+// 		indent += "  "
+// 	}
+// 	fmt.Println(indent + node.Name)
+// 	DisplayTree(node.Left, depth+1)
+// 	DisplayTree(node.Right, depth+1)
+// }
+
+// // Fungsi utama untuk testing dan membandingkan waktu
+// func CompareBFS(url string) {
+// 	idx := scrapping.MapperIdxElm[url]
+// 	if idx == -1 {
+// 		fmt.Println("Invalid item")
+// 		return
+// 	}
+
+// 	// Sequential
+// 	visitedSeq := make([]bool, 721)
+// 	start := time.Now()
+// 	treeSeq := BuildTreeSequential(idx, visitedSeq)
+// 	durationSeq := time.Since(start)
+// 	fmt.Println("\nSequential Tree:")
+// 	DisplayTree(treeSeq, 0)
+	
+// 	// Concurrent (tanpa waitgroup luar)
+// 	visitedConc := make([]bool, 721)
+// 	var mu sync.Mutex
+// 	start = time.Now()
+// 	treeConc := BuildTreeConcurrent(idx, visitedConc, &mu)
+// 	durationConc := time.Since(start)
+// 	fmt.Println("\nConcurrent Tree:")
+// 	DisplayTree(treeConc, 0)
+// 	fmt.Println("Sequential Time:", durationSeq)
+// 	fmt.Println("Concurrent Time:", durationConc)
+// }

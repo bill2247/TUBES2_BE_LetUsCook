@@ -1,10 +1,10 @@
 package scrapping
 
-import "src/data_type"
+import "let_us_cook/src/data_type"
 
 var MapperRecipe1 = map [int] []data_type.Recipe{
-                 0: {{2, 9}}, 
-                 2: {{2, 502}, {2, 273}}, 
+                 0: {{2,9}}, 
+                 2: {{2,502}, {2,273}}, 
                  3: {{22, 311}, {22, 165}}, 
                  5: {{1, 0}, {166, 0}, {7, 0}}, 
                  6: {{2, 2}, {2, 228}, {2, 40}, {22, 228}}, 

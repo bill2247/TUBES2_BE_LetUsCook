@@ -2,33 +2,35 @@ package bfs_multiple_recipe
 
 import (
 	"fmt"
-	"src/scrapping"
+	"sync"
+	"let_us_cook/src/scrapping"
+	"let_us_cook/src/data_type"
 )
 
-func Bfs_multiple_recipe(url string) {
+// Fungsi utama untuk memulai BFS dan membentuk pohon resep secara paralel
+func Bfs_multiple_recipe(url string) *data_type.RecipeTree {
 	visited := make([]bool, 721)
-
 	idx := scrapping.MapperIdxElm[url]
 	if idx == -1 {
 		fmt.Println("Error: Invalid URL")
-		return
+		return nil
 	}
-	Bfs_helper(idx, visited, 0)
+	var wg sync.WaitGroup
+	root := &data_type.RecipeTree{Name: scrapping.MapperElmIdx[idx]}
+	wg.Add(1)
+	go bfsHelperParallel(idx, visited, 0, root, &wg)
+	wg.Wait()
+	return root
 }
 
-func Stop(idx int, visited []bool,  depth int) bool {
-	return idx < 4 || visited[idx] || depth > 100
+// Fungsi untuk mengecek apakah pencarian perlu dihentikan
+func Stop(idx int, visited []bool, depth int) bool {
+	return idx < 4 || visited[idx]
 }
 
-func Bfs_helper(idx int, visited []bool, depth int) {
-	// Buat indentasi berdasarkan depth
-	indent := ""
-	for i := 0; i < depth; i++ {
-		indent += "-"
-	}
-
-	this := scrapping.MapperElmIdx[idx]
-	fmt.Println(indent + this)
+// Fungsi helper untuk membuat pohon resep secara paralel
+func bfsHelperParallel(idx int, visited []bool, depth int, node *data_type.RecipeTree, wg *sync.WaitGroup) {
+	defer wg.Done()
 
 	if Stop(idx, visited, depth) {
 		return
@@ -38,11 +40,20 @@ func Bfs_helper(idx int, visited []bool, depth int) {
 	recipes := scrapping.MapperRecipe1[idx]
 
 	for _, recipe := range recipes {
-		fmt.Println(indent + "Recipe: " + this)
+		firstIdx := recipe.First
+		secondIdx := recipe.Second
 
-		Bfs_helper(recipe.First, visited, depth+1)
-		Bfs_helper(recipe.Second, visited, depth+1)
+		firstName := scrapping.MapperElmIdx[firstIdx]
+		secondName := scrapping.MapperElmIdx[secondIdx]
 
-		fmt.Println(indent + "End Recipe: " + this)
+		firstNode := &data_type.RecipeTree{Name: firstName}
+		secondNode := &data_type.RecipeTree{Name: secondName}
+		pair := &data_type.Pair_recipe{First: firstNode, Second: secondNode}
+		node.Children = append(node.Children, pair)
+
+		wg.Add(2)
+		go bfsHelperParallel(firstIdx, visited, depth+1, firstNode, wg)
+		go bfsHelperParallel(secondIdx, visited, depth+1, secondNode, wg)
 	}
 }
+
