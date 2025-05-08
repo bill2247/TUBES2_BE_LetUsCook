@@ -1,19 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Live BFS</title>
+    <title>Live BFS Tree</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 20px;
+        }
+        #output {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ccc;
+            white-space: pre-wrap; /* menjaga format newline dan spasi */
+        }
+    </style>
     <script>
         async function startSearch() {
             const url = document.getElementById("url").value;
-            const response = await fetch(`/search?url=${encodeURIComponent(url)}`);
-            const tree = await response.json();
-            document.getElementById("output").innerText = JSON.stringify(tree, null, 2);
+            const bound = document.getElementById("bound").value;
+            const response = await fetch(`/search?url=${encodeURIComponent(url)}&bound=${encodeURIComponent(bound)}`);
+            const treeText = await response.text();  // Dapatkan hasil sebagai teks
+            document.getElementById("output").innerText = treeText;
         }
     </script>
 </head>
 <body>
-    <h1>BFS Live Tree Viewer</h1>
+    <h1>BFS Live Tree Viewer (Box Drawing)</h1>
     <input id="url" placeholder="Enter start URL">
+    <input id="bound" type="number" placeholder="Enter max recipes" min="1" value="1000">
     <button onclick="startSearch()">Search</button>
     <pre id="output"></pre>
 </body>
