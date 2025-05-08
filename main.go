@@ -145,7 +145,7 @@ func main() {
 		if req.Algorithm == "bfs" {
 			if req.Mode == "multiple" {
 				log.Printf("Calling BFS multiple recipe with query: %s", req.Query)
-				tree := bfs_multiple_recipe.Bfs_multiple_recipe(req.Query)
+				tree := bfs_multiple_recipe.Bfs_multiple_recipe(req.Query, 7)
 				if tree == nil {
 					log.Printf("BFS returned nil for query: %s", req.Query)
 					c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to process recipe"})
