@@ -1,6 +1,7 @@
 package dfs
 
 import (
+	"fmt"
 	"let_us_cook/src/data_type"
 	"let_us_cook/src/scrapping"
 )
@@ -33,4 +34,20 @@ func DFSSingle(t *data_type.RecipeTree) {
 		DFSSingle(secondRecipe)
 		break
 	}
+}
+
+func DFSSingleEntryPoint(url string) *data_type.RecipeTree {
+	idx := scrapping.MapperNameToIdx[url]
+	if idx == -1 {
+		fmt.Println("Error: Invalid URL")
+		return nil
+	}
+	tier := scrapping.MapperIdxToTier[idx]
+	if tier == -1 {
+		return &data_type.RecipeTree{Name: scrapping.MapperIdxToName[idx], Children: nil}
+	}
+	root := &data_type.RecipeTree{Name: scrapping.MapperIdxToName[idx]}
+
+	DFSSingle(root)
+	return root
 }

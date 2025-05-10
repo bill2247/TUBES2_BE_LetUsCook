@@ -46,12 +46,11 @@ func (c *Counter) IsLimitReached() bool {
 	return c.count >= c.limit
 }
 
-func DFSMultiple(t *data_type.RecipeTree, wg *sync.WaitGroup, depth int) int {
+func DFSMultiple(t *data_type.RecipeTree, wg *sync.WaitGroup) int {
 	if wg != nil {
 		defer wg.Done()
 	}
 
-	// fmt.Println(t.Name)
 	currentId := scrapping.MapperIdxElm[t.Name]
 
 	// basis
@@ -69,7 +68,6 @@ func DFSMultiple(t *data_type.RecipeTree, wg *sync.WaitGroup, depth int) int {
 			return 1
 		}
 		if totalWays >= GlobalCounter.limit {
-			fmt.Println("I'm here!")
 			return totalWays
 		}
 
@@ -92,11 +90,11 @@ func DFSMultiple(t *data_type.RecipeTree, wg *sync.WaitGroup, depth int) int {
 
 		go func() {
 			defer childWg.Done()
-			channel1 <- DFSMultiple(firstRecipe, nil, depth+1)
+			channel1 <- DFSMultiple(firstRecipe, nil)
 		}()
 		go func() {
 			defer childWg.Done()
-			channel2 <- DFSMultiple(secondRecipe, nil, depth+1)
+			channel2 <- DFSMultiple(secondRecipe, nil)
 		}()
 
 		childWg.Wait()
@@ -110,6 +108,28 @@ func DFSMultiple(t *data_type.RecipeTree, wg *sync.WaitGroup, depth int) int {
 		}
 	}
 	return totalWays
+}
+
+func DFSMultipleEntryPoint(url string) *data_type.RecipeTree {
+	idx := scrapping.MapperNameToIdx[url]
+	if idx == -1 {
+		fmt.Println("Error: Invalid URL")
+		return nil
+	}
+	tier := scrapping.MapperIdxToTier[idx]
+	if tier == -1 {
+		return &data_type.RecipeTree{Name: scrapping.MapperIdxToName[idx], Children: nil}
+	}
+	root := &data_type.RecipeTree{Name: scrapping.MapperIdxToName[idx]}
+	GlobalCounter.SetCounter(scrapping.MapperIdxElm[root.Name], 100)
+
+	var wg sync.WaitGroup
+	wg.Add(1)
+	go func() {
+		DFSMultiple(root, &wg)
+	}()
+	wg.Wait()
+	return root
 }
 
 // for debugging purposes

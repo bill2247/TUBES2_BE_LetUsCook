@@ -1,14 +1,17 @@
 package main
+
 import (
-	"log"
-	"net/http"
-	"time"
-	"os"
 	"encoding/json" // Tambahan
-	"github.com/gin-contrib/cors"
-	"github.com/gin-gonic/gin"
 	"let_us_cook/src/bfs_multiple_recipe"
 	"let_us_cook/src/bfs_shortest"
+	"let_us_cook/src/dfs"
+	"log"
+	"net/http"
+	"os"
+	"time"
+
+	"github.com/gin-contrib/cors"
+	"github.com/gin-gonic/gin"
 
 	"let_us_cook/src/scrapping"
 )
@@ -20,6 +23,7 @@ type SearchRequest struct {
 }
 
 func main() {
+	scrapping.StartScraper()
 	r := gin.Default()
 
 	r.Use(cors.New(cors.Config{
@@ -59,8 +63,6 @@ func main() {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "Algorithm must be 'bfs' or 'dfs'"})
 			return
 		}
-
-		scrapping.StartScraper()
 
 		var result interface{}
 
@@ -112,8 +114,52 @@ func main() {
 				}
 			}
 		} else if req.Algorithm == "dfs" {
-			c.JSON(http.StatusBadRequest, gin.H{"error": "DFS algorithm not yet implemented"})
-			return
+			if req.Mode == "multiple" {
+				log.Printf("Calling BFS multiple recipe with query: %s", req.Query)
+				tree := dfs.DFSMultipleEntryPoint(req.Query)
+				if tree == nil {
+					log.Printf("BFS returned nil for query: %s", req.Query)
+					c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to process recipe"})
+					return
+				}
+				result = tree
+
+				// simpan hasil ke file JSON
+				jsonBytes, err := json.MarshalIndent(result, "", "  ")
+				if err != nil {
+					log.Printf("Gagal mengubah ke JSON: %v", err)
+				} else {
+					err := os.WriteFile("output_recipe.json", jsonBytes, 0644)
+					if err != nil {
+						log.Printf("Gagal menulis file JSON: %v", err)
+					} else {
+						log.Println("Berhasil menyimpan hasil pencarian ke output_recipe.json")
+					}
+				}
+
+			} else {
+				log.Printf("Calling BFS multiple recipe with query: %s", req.Query)
+				tree := dfs.DFSSingleEntryPoint(req.Query)
+				if tree == nil {
+					log.Printf("BFS returned nil for query: %s", req.Query)
+					c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to process recipe"})
+					return
+				}
+				result = tree
+
+				// simpan hasil ke file JSON
+				jsonBytes, err := json.MarshalIndent(result, "", "  ")
+				if err != nil {
+					log.Printf("Gagal mengubah ke JSON: %v", err)
+				} else {
+					err := os.WriteFile("output_recipe.json", jsonBytes, 0644)
+					if err != nil {
+						log.Printf("Gagal menulis file JSON: %v", err)
+					} else {
+						log.Println("Berhasil menyimpan hasil pencarian ke output_recipe.json")
+					}
+				}
+			}
 		}
 
 		log.Printf("Sending response with result: %+v", result)

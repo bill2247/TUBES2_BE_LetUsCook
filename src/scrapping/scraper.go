@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"let_us_cook/src/data_type"
 	"net/http"
 	"os"
 	"regexp"
@@ -13,11 +14,11 @@ import (
 )
 
 var (
-	FinalData  = make(map[string][]AlchemyEntry)
+	FinalData          = make(map[string][]AlchemyEntry)
 	MapperNameToIdx    = make(map[string]int)
 	MapperIdxToName    = make(map[int]string)
 	MapperIdxToTier    = make(map[int]int)
-	MapperIdxToRecipes = make(map[int][]Pair)
+	MapperIdxToRecipes = make(map[int][]data_type.Recipe)
 )
 
 // normalizeText membersihkan spasi berlebih dari teks
@@ -52,11 +53,6 @@ func extractCombinations(td *goquery.Selection) []string {
 type AlchemyEntry struct {
 	Name     string   `json:"element"`
 	Combines []string `json:"recipes"`
-}
-
-type Pair struct {
-	First int `json:"First"`
-	Second int `json:"Second"`
 }
 
 // FetchAllData memuat semua data dari file JSON ke slice
@@ -173,7 +169,7 @@ func StartScraper() error {
 				second := normalizeText(parts[1])
 				firstIdx, ok1 := MapperNameToIdx[first]
 				secondIdx, ok2 := MapperNameToIdx[second]
-				pair :=  Pair{First: firstIdx, Second: secondIdx}
+				pair := data_type.Recipe{First: firstIdx, Second: secondIdx}
 				if ok1 && ok2 {
 					MapperIdxToRecipes[resultIdx] = append(MapperIdxToRecipes[resultIdx], pair)
 				}
@@ -208,7 +204,7 @@ func FinalDataSaveToFile() {
 	fmt.Println("Final data saved to little_alchemy_elements.json")
 }
 
-func MapperNameToIdxSaveToFile(){
+func MapperNameToIdxSaveToFile() {
 	// Simpan MapperNameToIdx ke file JSON
 	output, err := os.Create("scraper/JSON/MapperNameToIdx.json")
 	if err != nil {
@@ -226,7 +222,7 @@ func MapperNameToIdxSaveToFile(){
 	fmt.Println("Mapper saved to MapperNameToIdx.json")
 }
 
-func MapperIdxToNameSaveToFile(){
+func MapperIdxToNameSaveToFile() {
 	// Simpan MapperIdxToName ke file JSON
 	output, err := os.Create("scraper/JSON/MapperIdxToName.json")
 	if err != nil {
@@ -244,7 +240,7 @@ func MapperIdxToNameSaveToFile(){
 	fmt.Println("Mapper saved to MapperIdxToName.json")
 }
 
-func MapperIdxToTierSaveToFile(){
+func MapperIdxToTierSaveToFile() {
 	// Simpan MapperIdxToTier ke file JSON
 	output, err := os.Create("scraper/JSON/MapperIdxToTier.json")
 	if err != nil {
@@ -262,7 +258,7 @@ func MapperIdxToTierSaveToFile(){
 	fmt.Println("Mapper saved to MapperIdxToTier.json")
 }
 
-func MapperIdxToRecipesSaveToFile(){
+func MapperIdxToRecipesSaveToFile() {
 	// Simpan MapperIdxToRecipes ke file JSON
 	output, err := os.Create("scraper/JSON/MapperIdxToRecipes.json")
 	if err != nil {
