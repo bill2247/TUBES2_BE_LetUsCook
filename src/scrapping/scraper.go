@@ -8,6 +8,7 @@ import (
 	"os"
 	"regexp"
 	"strings"
+	"let_us_cook/src/data_type"
 
 	"github.com/PuerkitoBio/goquery"
 )
@@ -17,7 +18,7 @@ var (
 	MapperNameToIdx    = make(map[string]int)
 	MapperIdxToName    = make(map[int]string)
 	MapperIdxToTier    = make(map[int]int)
-	MapperIdxToRecipes = make(map[int][]Pair)
+	MapperIdxToRecipes = make(map[int][]data_type.Recipe)
 )
 
 // normalizeText membersihkan spasi berlebih dari teks
@@ -52,11 +53,6 @@ func extractCombinations(td *goquery.Selection) []string {
 type AlchemyEntry struct {
 	Name     string   `json:"element"`
 	Combines []string `json:"recipes"`
-}
-
-type Pair struct {
-	First int `json:"First"`
-	Second int `json:"Second"`
 }
 
 // FetchAllData memuat semua data dari file JSON ke slice
@@ -173,7 +169,7 @@ func StartScraper() error {
 				second := normalizeText(parts[1])
 				firstIdx, ok1 := MapperNameToIdx[first]
 				secondIdx, ok2 := MapperNameToIdx[second]
-				pair :=  Pair{First: firstIdx, Second: secondIdx}
+				pair :=  data_type.Recipe{First: firstIdx, Second: secondIdx}
 				if ok1 && ok2 {
 					MapperIdxToRecipes[resultIdx] = append(MapperIdxToRecipes[resultIdx], pair)
 				}
