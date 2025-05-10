@@ -1,49 +1,50 @@
 // main.go
 package main
 
-// import (
-// 	"bufio"
-// 	"fmt"
-// 	"let_us_cook/src/dfs"
-// 	"let_us_cook/src/scrapping"
-// 	"os"
-// 	"strings"
-// 	"sync"
-// 	"time"
-// )
+import (
+	"let_us_cook/src/bfs_multiple_recipe"
+	"net/http"
+	"strconv"
+
+	"github.com/gin-gonic/gin"
+	// "let_us_cook/src/bfs_single"
+)
+
+func main() {
+	router := gin.Default()
+
+	// Load HTML template
+	router.LoadHTMLGlob("web/templates/*")
+	router.Static("/static", "./web/static")
+
+	// Halaman utama
+	router.GET("/", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "index.html", nil)
+	})
+
+	router.GET("/search", func(c *gin.Context) {
+		startURL := c.Query("url")
+		boundStr := c.Query("bound")
+
+		bound, err := strconv.Atoi(boundStr)
+		if err != nil || bound < 1 {
+			bound = 5 // fallback default
+		}
+
+		tree := bfs_multiple_recipe.Bfs_multiple_recipe(startURL, bound)
+		bfs_multiple_recipe.PruneNonTerminal(tree)
+
+		// simpan ke string hasil dari DisplayTree
+		treeStr := bfs_multiple_recipe.TreeToString(tree)
+		c.String(http.StatusOK, treeStr) // kirim sebagai plain text
+	})
+
+	router.Run(":8080") // Jalankan server di localhost:8080
+}
 
 // func main() {
-// 	fmt.Println("[Kusanagi Nene's Brewery]")
-// 	reader := bufio.NewReader(os.Stdin)
-// 	input, _ := reader.ReadString('\n')
-// 	root := dfs.CreateRecipeTreeFromName(strings.TrimSpace(input))
-// 	dfs.GlobalCounter.SetCounter(scrapping.MapperIdxElm[root.Name], 1000)
-
-// 	var wg sync.WaitGroup
-// 	wg.Add(1)
-
-// 	start := time.Now()
-// 	go func() {
-// 		dfs.DFSMultiple(root, &wg, 0)
-// 	}()
-// 	wg.Wait()
-// 	elapsed := time.Since(start)
-
-// 	fmt.Println("------------------------")
-// 	dfs.PrintTree(root, 0)
-// 	fmt.Printf("Execution time: %s\n", elapsed)
-// 	fmt.Printf("Node count    : %d\n", dfs.NodeCount(root))
-// 	fmt.Printf("Found         : %d\n", dfs.GlobalCounter.GetCount())
-
-// 	dfs.GlobalCounter.SetCounter(scrapping.MapperIdxElm[root.Name], 1000)
-
-// 	start2 := time.Now()
-// 	dfs.DFSMultipleSerial(root)
-// 	elapsed2 := time.Since(start2)
-
-// 	fmt.Println("------------------------")
-// 	dfs.PrintTree(root, 0)
-// 	fmt.Printf("Execution time: %s\n", elapsed2)
-// 	fmt.Printf("Node count    : %d\n", dfs.NodeCount(root))
-// 	fmt.Printf("Found         : %d\n", dfs.GlobalCounter.GetCount())
+// 	url := "Duck"
+// 	// max := int32(20)
+// 	tree := bfs_single.FindShortestPath(url)
+// 	bfs_single.DisplayTree(tree, "", true)
 // }
