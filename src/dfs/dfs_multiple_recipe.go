@@ -110,15 +110,15 @@ func DFSMultiple(t *data_type.RecipeTree, wg *sync.WaitGroup) int {
 	return totalWays
 }
 
-func DFSMultipleEntryPoint(url string) *data_type.RecipeTree {
+func DFSMultipleEntryPoint(url string) (*data_type.RecipeTree, int) {
 	idx := scrapping.MapperNameToIdx[url]
 	if idx == -1 {
 		fmt.Println("Error: Invalid URL")
-		return nil
+		return nil, 0
 	}
 	tier := scrapping.MapperIdxToTier[idx]
 	if tier == -1 {
-		return &data_type.RecipeTree{Name: scrapping.MapperIdxToName[idx], Children: nil}
+		return &data_type.RecipeTree{Name: scrapping.MapperIdxToName[idx], Children: nil}, 1
 	}
 	root := &data_type.RecipeTree{Name: scrapping.MapperIdxToName[idx]}
 	GlobalCounter.SetCounter(scrapping.MapperIdxElm[root.Name], 100)
@@ -129,7 +129,7 @@ func DFSMultipleEntryPoint(url string) *data_type.RecipeTree {
 		DFSMultiple(root, &wg)
 	}()
 	wg.Wait()
-	return root
+	return root, NodeCount(root)
 }
 
 // for debugging purposes

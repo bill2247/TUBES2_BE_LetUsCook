@@ -14,15 +14,15 @@ type bfsTask struct {
 	Depth int
 }
 
-func Bfs_multiple_recipe(url string, bound int) *data_type.RecipeTree {
+func Bfs_multiple_recipe(url string, bound int) (*data_type.RecipeTree, int) {
 	idx := scrapping.MapperNameToIdx[url]
 	if idx == -1 {
 		fmt.Println("Error: Invalid URL")
-		return nil
+		return nil, 0
 	}
 	tier := scrapping.MapperIdxToTier[idx]
 	if tier == -1 {
-		return &data_type.RecipeTree{Name: scrapping.MapperIdxToName[idx], Children: nil}
+		return &data_type.RecipeTree{Name: scrapping.MapperIdxToName[idx], Children: nil}, 1
 	}
 
 	root := &data_type.RecipeTree{Name: scrapping.MapperIdxToName[idx]}
@@ -30,6 +30,7 @@ func Bfs_multiple_recipe(url string, bound int) *data_type.RecipeTree {
 	visited := make([]bool, 720)
 	var visitedMu sync.Mutex
 
+	countNode := 1
 	var count int
 	var countMu sync.Mutex
 
@@ -76,7 +77,8 @@ func Bfs_multiple_recipe(url string, bound int) *data_type.RecipeTree {
 						count++
 					}
 					countMu.Unlock()
-
+					// itung count node
+					countNode += 2;
 					firstNode := &data_type.RecipeTree{Name: scrapping.MapperIdxToName[firstIdx]}
 					secondNode := &data_type.RecipeTree{Name: scrapping.MapperIdxToName[secondIdx]}
 					pair := &data_type.Pair_recipe{First: firstNode, Second: secondNode}
@@ -98,7 +100,7 @@ func Bfs_multiple_recipe(url string, bound int) *data_type.RecipeTree {
 	PruneNonTerminalParallel(root)
 	PruneNonTerminalParallel(root)
 
-	return root
+	return root, countNode // debugging
 }
 
 func Stop(idx int, visited []bool, depth int) bool {

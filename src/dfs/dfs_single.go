@@ -36,18 +36,18 @@ func DFSSingle(t *data_type.RecipeTree) {
 	}
 }
 
-func DFSSingleEntryPoint(url string) *data_type.RecipeTree {
+func DFSSingleEntryPoint(url string) (*data_type.RecipeTree, int) {
 	idx := scrapping.MapperNameToIdx[url]
 	if idx == -1 {
 		fmt.Println("Error: Invalid URL")
-		return nil
+		return nil, 0
 	}
 	tier := scrapping.MapperIdxToTier[idx]
 	if tier == -1 {
-		return &data_type.RecipeTree{Name: scrapping.MapperIdxToName[idx], Children: nil}
+		return &data_type.RecipeTree{Name: scrapping.MapperIdxToName[idx], Children: nil}, 1
 	}
 	root := &data_type.RecipeTree{Name: scrapping.MapperIdxToName[idx]}
 
 	DFSSingle(root)
-	return root
+	return root, NodeCount(root)
 }

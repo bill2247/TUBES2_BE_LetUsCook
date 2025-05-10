@@ -8,11 +8,11 @@ import (
 )
 
 // fungsi utama untuk mencari jalur terpendek
-func FindShortestPath(targetURL string) *data_type.RecipeTree {
+func FindShortestPath(targetURL string) (*data_type.RecipeTree, int) {
 	targetIdx, ok := scrapping.MapperNameToIdx[targetURL]
 	if !ok || targetIdx == -1 {
 		fmt.Println("Error: Invalid target URL")
-		return nil
+		return nil, 0
 	}
 
 	// queue untuk BFS - menyimpan index resep dan tree node
@@ -35,10 +35,12 @@ func FindShortestPath(targetURL string) *data_type.RecipeTree {
 	bestRecipes := make(map[int]*data_type.Recipe)
 	
 	// BFS untuk mencari jalur terpendek
+	visitedCount := 0
 	for len(queue) > 0 {
 		// ambil item pertama dari queue
 		current := queue[0]
 		queue = queue[1:]
+		visitedCount ++
 		
 		currentIdx := current.idx
 		currentNode := current.node
@@ -113,8 +115,8 @@ func FindShortestPath(targetURL string) *data_type.RecipeTree {
 	
 	// rekonstruksi jalur optimal
 	optimalPath := ConstructOptimalPath(targetIdx, bestRecipes)
-	
-	return optimalPath
+	fmt.Printf("Jumlah node yang dikunjungi: %d\n", visitedCount)
+	return optimalPath, visitedCount
 }
 
 // rekonstruksi jalur optimal dari resep terbaik
