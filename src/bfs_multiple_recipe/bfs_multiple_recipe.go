@@ -15,14 +15,14 @@ type bfsTask struct {
 
 // Fungsi utama tanpa konkurensi, dengan batas jumlah resep
 func Bfs_multiple_recipe(url string, bound int) *data_type.RecipeTree {
-	idx := scrapping.MapperIdxElm[url]
+	idx := scrapping.MapperNameToIdx[url]
 	if idx == -1 {
 		fmt.Println("Error: Invalid URL")
 		return nil
 	}
 
 	visited := make([]bool, 720)
-	root := &data_type.RecipeTree{Name: scrapping.MapperElmIdx[idx]}
+	root := &data_type.RecipeTree{Name: scrapping.MapperIdxToName[idx]}
 	queue := []bfsTask{{Idx: idx, Node: root, Depth: 0}}
 
 	count := 0
@@ -40,7 +40,7 @@ func Bfs_multiple_recipe(url string, bound int) *data_type.RecipeTree {
 		}
 		visited[idx] = true
 
-		recipes := scrapping.MapperRecipe1[idx]
+		recipes := scrapping.MapperIdxToRecipes[idx]
 		for _, recipe := range recipes {
 			if count >= bound {
 				break
@@ -49,8 +49,8 @@ func Bfs_multiple_recipe(url string, bound int) *data_type.RecipeTree {
 			firstIdx := recipe.First
 			secondIdx := recipe.Second
 
-			firstNode := &data_type.RecipeTree{Name: scrapping.MapperElmIdx[firstIdx]}
-			secondNode := &data_type.RecipeTree{Name: scrapping.MapperElmIdx[secondIdx]}
+			firstNode := &data_type.RecipeTree{Name: scrapping.MapperIdxToName[firstIdx]}
+			secondNode := &data_type.RecipeTree{Name: scrapping.MapperIdxToName[secondIdx]}
 			pair := &data_type.Pair_recipe{First: firstNode, Second: secondNode}
 
 			node.Children = append(node.Children, pair)
@@ -157,6 +157,6 @@ func displayTreeToBuilder(node *data_type.RecipeTree, prefix string, isTail bool
 }
 
 func isBasicElement(node *data_type.RecipeTree) bool {
-	idx, ok := scrapping.MapperIdxElm[node.Name]
+	idx, ok := scrapping.MapperNameToIdx[node.Name]
 	return ok && idx <= 4
 }

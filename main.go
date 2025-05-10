@@ -75,28 +75,27 @@
 // }
 
 package main
-
 import (
 	"log"
 	"net/http"
 	"time"
-
+	"os"
+	"encoding/json" // Tambahan
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"let_us_cook/src/bfs_multiple_recipe"
+	"let_us_cook/src/scrapping"
 )
 
-// Struktur untuk request search
 type SearchRequest struct {
 	Query     string `json:"query"`
-	Mode      string `json:"mode"`      // 'single' atau 'multiple'
-	Algorithm string `json:"algorithm"` // 'bfs' atau 'dfs'
+	Mode      string `json:"mode"`
+	Algorithm string `json:"algorithm"`
 }
 
 func main() {
 	r := gin.Default()
 
-	// Konfigurasi CORS
 	r.Use(cors.New(cors.Config{
 		AllowOrigins:     []string{"http://localhost:3000"},
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
@@ -106,14 +105,12 @@ func main() {
 		MaxAge:           12 * time.Hour,
 	}))
 
-	// Simple test endpoint
 	r.GET("/api/ping", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"message": "pong",
 		})
 	})
 
-	// Route untuk search API
 	r.POST("/api/search", func(c *gin.Context) {
 		var req SearchRequest
 		if err := c.ShouldBindJSON(&req); err != nil {
@@ -124,21 +121,20 @@ func main() {
 
 		log.Printf("Received search request: Query=%s, Mode=%s, Algorithm=%s", req.Query, req.Mode, req.Algorithm)
 
-		// Validasi input
 		if req.Query == "" {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "Query cannot be empty"})
 			return
 		}
-
 		if req.Mode != "single" && req.Mode != "multiple" {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "Mode must be 'single' or 'multiple'"})
 			return
 		}
-
 		if req.Algorithm != "bfs" && req.Algorithm != "dfs" {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "Algorithm must be 'bfs' or 'dfs'"})
 			return
 		}
+
+		scrapping.StartScraper()
 
 		var result interface{}
 
@@ -152,13 +148,25 @@ func main() {
 					return
 				}
 				result = tree
+
+				// 🔽 Simpan hasil ke file JSON
+				jsonBytes, err := json.MarshalIndent(result, "", "  ")
+				if err != nil {
+					log.Printf("❌ Gagal mengubah ke JSON: %v", err)
+				} else {
+					err := os.WriteFile("output_recipe.json", jsonBytes, 0644)
+					if err != nil {
+						log.Printf("❌ Gagal menulis file JSON: %v", err)
+					} else {
+						log.Println("✅ Berhasil menyimpan hasil pencarian ke output_recipe.json")
+					}
+				}
+
 			} else {
-				// Handle single mode
 				c.JSON(http.StatusBadRequest, gin.H{"error": "Single mode not yet implemented for BFS"})
 				return
 			}
 		} else if req.Algorithm == "dfs" {
-			// Handle DFS
 			c.JSON(http.StatusBadRequest, gin.H{"error": "DFS algorithm not yet implemented"})
 			return
 		}
@@ -170,7 +178,6 @@ func main() {
 		})
 	})
 
-	// Run server
 	log.Println("Server is running on port 8080")
 	r.Run(":8080")
 }
