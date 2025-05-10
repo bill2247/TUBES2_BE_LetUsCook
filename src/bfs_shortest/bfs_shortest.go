@@ -35,12 +35,12 @@ func FindShortestPath(targetURL string) (*data_type.RecipeTree, int) {
 	bestRecipes := make(map[int]*data_type.Recipe)
 	
 	// BFS untuk mencari jalur terpendek
-	visitedCount := 0
+	visitedCount := 1
 	for len(queue) > 0 {
 		// ambil item pertama dari queue
 		current := queue[0]
 		queue = queue[1:]
-		visitedCount ++
+		
 		
 		currentIdx := current.idx
 		currentNode := current.node
@@ -91,6 +91,7 @@ func FindShortestPath(targetURL string) (*data_type.RecipeTree, int) {
 		firstIdx := bestRecipe.First
 		secondIdx := bestRecipe.Second
 		
+		visitedCount += 2
 		// buat node untuk bahan pertama dan kedua
 		firstNode := &data_type.RecipeTree{Name: scrapping.MapperIdxToName[firstIdx]}
 		secondNode := &data_type.RecipeTree{Name: scrapping.MapperIdxToName[secondIdx]}
