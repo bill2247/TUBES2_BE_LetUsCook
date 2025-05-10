@@ -1,79 +1,3 @@
-// package main
-
-// import (
-// 	// "encoding/json"
-// 	"log"
-// 	"net/http"
-// 	"time"
-
-// 	"github.com/gin-contrib/cors"
-// 	"github.com/gin-gonic/gin"
-// 	"let_us_cook/src/bfs_multiple_recipe"
-
-// )
-
-
-// // Struktur untuk request search
-// type SearchRequest struct {
-// 	Query     string `json:"query"`
-// 	Mode      string `json:"mode"`      // 'single' atau 'multiple'
-// 	Algorithm string `json:"algorithm"` // 'bfs' atau 'dfs'
-// }
-
-// func main() {
-// 	r := gin.Default()
-
-// 	// Konfigurasi CORS
-// 	r.Use(cors.New(cors.Config{
-// 		AllowOrigins:     []string{"http://localhost:3000"},
-// 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
-// 		AllowHeaders:     []string{"Origin", "Content-Type", "Accept", "Authorization"},
-// 		ExposeHeaders:    []string{"Content-Length"},
-// 		AllowCredentials: true,
-// 		MaxAge:           12 * time.Hour,
-// 	}))
-
-// 	// Route untuk search API
-// 	r.POST("/api/search", func(c *gin.Context) {
-// 		var req SearchRequest
-// 		if err := c.ShouldBindJSON(&req); err != nil {
-// 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-// 			return
-// 		}
-	
-// 		// Validasi input
-// 		if req.Query == "" {
-// 			c.JSON(http.StatusBadRequest, gin.H{"error": "Query cannot be empty"})
-// 			return
-// 		}
-// 		// ... validasi lainnya ...
-	
-// 		var result interface{}
-		
-// 		if req.Algorithm == "bfs" {
-// 			if req.Mode == "multiple" {
-// 				tree := bfs_multiple_recipe.Bfs_multiple_recipe(req.Query) // Gunakan req.Query sebagai URL
-// 				if tree == nil {
-// 					c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to process recipe"})
-// 					return
-// 				}
-// 				result = tree
-// 			}
-// 		} else {
-// 			// Handle DFS
-// 		}
-	
-// 		c.JSON(http.StatusOK, gin.H{
-// 			"success": true,
-// 			"data":    result,
-// 		})
-// 	})
-
-// 	// Run server
-// 	log.Println("Server is running on port 8080")
-// 	r.Run(":8080")
-// }
-
 package main
 import (
 	"log"
@@ -84,6 +8,8 @@ import (
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"let_us_cook/src/bfs_multiple_recipe"
+	"let_us_cook/src/bfs_shortest"
+
 	"let_us_cook/src/scrapping"
 )
 
@@ -149,22 +75,41 @@ func main() {
 				}
 				result = tree
 
-				// 🔽 Simpan hasil ke file JSON
+				// simpan hasil ke file JSON
 				jsonBytes, err := json.MarshalIndent(result, "", "  ")
 				if err != nil {
-					log.Printf("❌ Gagal mengubah ke JSON: %v", err)
+					log.Printf("Gagal mengubah ke JSON: %v", err)
 				} else {
 					err := os.WriteFile("output_recipe.json", jsonBytes, 0644)
 					if err != nil {
-						log.Printf("❌ Gagal menulis file JSON: %v", err)
+						log.Printf("Gagal menulis file JSON: %v", err)
 					} else {
-						log.Println("✅ Berhasil menyimpan hasil pencarian ke output_recipe.json")
+						log.Println("Berhasil menyimpan hasil pencarian ke output_recipe.json")
 					}
 				}
 
 			} else {
-				c.JSON(http.StatusBadRequest, gin.H{"error": "Single mode not yet implemented for BFS"})
-				return
+				log.Printf("Calling BFS multiple recipe with query: %s", req.Query)
+				tree := bfs_shortest.FindShortestPath(req.Query)
+				if tree == nil {
+					log.Printf("BFS returned nil for query: %s", req.Query)
+					c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to process recipe"})
+					return
+				}
+				result = tree
+
+				// simpan hasil ke file JSON
+				jsonBytes, err := json.MarshalIndent(result, "", "  ")
+				if err != nil {
+					log.Printf("Gagal mengubah ke JSON: %v", err)
+				} else {
+					err := os.WriteFile("output_recipe.json", jsonBytes, 0644)
+					if err != nil {
+						log.Printf("Gagal menulis file JSON: %v", err)
+					} else {
+						log.Println("Berhasil menyimpan hasil pencarian ke output_recipe.json")
+					}
+				}
 			}
 		} else if req.Algorithm == "dfs" {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "DFS algorithm not yet implemented"})
