@@ -71,7 +71,11 @@ func main() {
 		if req.Algorithm == "bfs" {
 			if req.Mode == "multiple" {
 				log.Printf("Calling BFS multiple recipe with query: %s", req.Query)
+
+				// hitung durasi
+				startTime := time.Now()
 				tree, count := bfs_multiple_recipe.Bfs_multiple_recipe(req.Query, 7)
+				duration := time.Since(startTime)
 				if tree == nil {
 					log.Printf("BFS returned nil for query: %s", req.Query)
 					c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to process recipe"})
@@ -80,6 +84,7 @@ func main() {
 				result = gin.H{
 					"tree":  tree,
 					"count": count, 
+					"duration": duration.Seconds(),
 				}
 
 				// simpan hasil ke file JSON
@@ -97,7 +102,11 @@ func main() {
 
 			} else {
 				log.Printf("Calling BFS multiple recipe with query: %s", req.Query)
+				// hitung durasi
+				startTime := time.Now()
 				tree, count := bfs_shortest.FindShortestPath(req.Query)
+				duration := time.Since(startTime)
+
 				if tree == nil {
 					log.Printf("BFS returned nil for query: %s", req.Query)
 					c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to process recipe"})
@@ -106,6 +115,7 @@ func main() {
 				result = gin.H{
 					"tree":  tree,
 					"count": count, 
+					"duration": duration.Seconds(),
 				}
 
 				// simpan hasil ke file JSON
@@ -124,7 +134,10 @@ func main() {
 		} else if req.Algorithm == "dfs" {
 			if req.Mode == "multiple" {
 				log.Printf("Calling BFS multiple recipe with query: %s", req.Query)
+				// hitung durasi
+				startTime := time.Now()
 				tree, count := dfs.DFSMultipleEntryPoint(req.Query)
+				duration := time.Since(startTime)
 				if tree == nil {
 					log.Printf("BFS returned nil for query: %s", req.Query)
 					c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to process recipe"})
@@ -133,6 +146,7 @@ func main() {
 				result = gin.H{
 					"tree":  tree,
 					"count": count, 
+					"duration": duration.Seconds(),
 				}
 				// simpan hasil ke file JSON
 				jsonBytes, err := json.MarshalIndent(result, "", "  ")
@@ -149,7 +163,10 @@ func main() {
 
 			} else {
 				log.Printf("Calling BFS multiple recipe with query: %s", req.Query)
+				// hitung durasi
+				startTime := time.Now()
 				tree, count := dfs.DFSSingleEntryPoint(req.Query)
+				duration := time.Since(startTime)
 				if tree == nil {
 					log.Printf("BFS returned nil for query: %s", req.Query)
 					c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to process recipe"})
@@ -158,6 +175,7 @@ func main() {
 				result = gin.H{
 					"tree":  tree,
 					"count": count, 
+					"duration": duration.Seconds(),
 				}
 
 				// simpan hasil ke file JSON
