@@ -1,0 +1,26 @@
+# Copy this file to the root of the directory, change the format to .yml, then run docker compose up --build
+
+services:
+  backend:
+    build:
+      context: ./TUBES2_BE_LetUsCook
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./TUBES2_FE_LetUsCook
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://backend:8080
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
