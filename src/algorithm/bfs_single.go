@@ -20,6 +20,10 @@ func FindShortestPath(targetURL string) (*data_type.RecipeTree, int) {
 		node     *data_type.RecipeTree
 		distance int
 	}
+	tier := scrapping.MapperIdxToTier[targetIdx]
+	if tier == -1 || tier == 0{
+		return &data_type.RecipeTree{Name: scrapping.MapperIdxToName[targetIdx], Children: nil}, 1
+	}
 
 	// map untuk menyimpan node yang sudah dikunjungi dan jaraknya
 	visited := make(map[int]int) 
@@ -64,7 +68,12 @@ func FindShortestPath(targetURL string) (*data_type.RecipeTree, int) {
 		for _, recipe := range recipes {
 			firstIdx := recipe.First
 			secondIdx := recipe.Second
-			
+
+			currentTier := scrapping.MapperIdxToTier[currentIdx]
+			if currentTier < scrapping.MapperIdxToTier[firstIdx] || currentTier < scrapping.MapperIdxToTier[secondIdx] {
+				continue
+			}
+	
 			// hitung skor resep (prioritaskan elemen dasar)
 			score := 0
 			if firstIdx <= 4 {

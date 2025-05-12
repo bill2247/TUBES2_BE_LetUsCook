@@ -20,7 +20,7 @@ func Bfs_multiple_recipe(url string, bound int) (*data_type.RecipeTree, int) {
 		return nil, 0
 	}
 	tier := scrapping.MapperIdxToTier[idx]
-	if tier == -1 {
+	if tier == -1 || tier == 0 {
 		return &data_type.RecipeTree{Name: scrapping.MapperIdxToName[idx], Children: nil}, 1
 	}
 
@@ -59,20 +59,17 @@ func Bfs_multiple_recipe(url string, bound int) (*data_type.RecipeTree, int) {
 				}
 
 				recipes := scrapping.MapperIdxToRecipes[idx]
+				currentTier := scrapping.MapperIdxToTier[idx]
 				for _, recipe := range recipes {
 					firstIdx := recipe.First
 					secondIdx := recipe.Second
-
-					if scrapping.MapperIdxToTier[firstIdx] >= tier || scrapping.MapperIdxToTier[secondIdx] >= tier {
+					if currentTier < scrapping.MapperIdxToTier[firstIdx] || currentTier < scrapping.MapperIdxToTier[secondIdx] {
 						continue
 					}
 
 					countMu.Lock()
 					if count >= bound {
 						countMu.Unlock()
-						newRoot, nodeAddition := completeTheRoot(root)
-						root = newRoot
-						countNode += nodeAddition
 						break
 					}
 					if countRecipe(root) >= bound {
@@ -99,6 +96,9 @@ func Bfs_multiple_recipe(url string, bound int) (*data_type.RecipeTree, int) {
 
 	PruneNonTerminalParallel(root)
 	PruneNonTerminalParallel(root)
+	newRoot, nodeAddition := completeTheRoot(root)
+	root = newRoot
+	countNode += nodeAddition
 
 	return root, countNode 
 }

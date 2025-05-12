@@ -139,6 +139,9 @@ func StartScraper() error {
 				}
 				first := normalizeText(parts[0])
 				second := normalizeText(parts[1])
+				if first == "Time" || second == "Time" {
+					continue
+				}
 				firstIdx, ok1 := MapperNameToIdx[first]
 				secondIdx, ok2 := MapperNameToIdx[second]
 				pair := data_type.Recipe{First: firstIdx, Second: secondIdx}

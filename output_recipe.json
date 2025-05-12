@@ -1,6 +1,6 @@
 {
-  "count": 1979,
-  "duration": 0.033278002,
+  "count": 406,
+  "duration": 0.002300808,
   "tree": {
     "name": "Alpaca",
     "children": [
@@ -10,343 +10,67 @@
           "children": [
             {
               "First": {
-                "name": "Livestock"
-              },
-              "Second": {
-                "name": "Cloud",
+                "name": "Livestock",
                 "children": [
                   {
                     "First": {
-                      "name": "Atmosphere"
-                    },
-                    "Second": {
-                      "name": "Mist",
+                      "name": "Animal",
                       "children": [
                         {
                           "First": {
-                            "name": "Air"
-                          },
-                          "Second": {
-                            "name": "Steam",
+                            "name": "Life",
                             "children": [
                               {
                                 "First": {
-                                  "name": "Water"
-                                },
-                                "Second": {
-                                  "name": "Fire"
-                                }
-                              }
-                            ]
-                          }
-                        },
-                        {
-                          "First": {
-                            "name": "Air"
-                          },
-                          "Second": {
-                            "name": "Water"
-                          }
-                        }
-                      ]
-                    }
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        "Second": {
-          "name": "Mountain range",
-          "children": [
-            {
-              "First": {
-                "name": "Mountain"
-              },
-              "Second": {
-                "name": "Continent",
-                "children": [
-                  {
-                    "First": {
-                      "name": "Land"
-                    },
-                    "Second": {
-                      "name": "Land",
-                      "children": [
-                        {
-                          "First": {
-                            "name": "Earth"
-                          },
-                          "Second": {
-                            "name": "Earth"
-                          }
-                        },
-                        {
-                          "First": {
-                            "name": "Earth"
-                          },
-                          "Second": {
-                            "name": "Stone",
-                            "children": [
-                              {
-                                "First": {
-                                  "name": "Earth"
-                                },
-                                "Second": {
-                                  "name": "Solid",
+                                  "name": "Primordial soup",
                                   "children": [
                                     {
                                       "First": {
                                         "name": "Earth"
                                       },
                                       "Second": {
-                                        "name": "Idea",
+                                        "name": "Ocean",
                                         "children": [
                                           {
                                             "First": {
-                                              "name": "Butcher",
+                                              "name": "Sea",
                                               "children": [
                                                 {
                                                   "First": {
-                                                    "name": "Human"
-                                                  },
-                                                  "Second": {
-                                                    "name": "Ham",
+                                                    "name": "Lake",
                                                     "children": [
                                                       {
                                                         "First": {
-                                                          "name": "Smoke",
+                                                          "name": "Pond",
                                                           "children": [
                                                             {
                                                               "First": {
-                                                                "name": "Fire"
-                                                              },
-                                                              "Second": {
-                                                                "name": "Air"
-                                                              }
-                                                            }
-                                                          ]
-                                                        },
-                                                        "Second": {
-                                                          "name": "Meat"
-                                                        }
-                                                      }
-                                                    ]
-                                                  }
-                                                }
-                                              ]
-                                            },
-                                            "Second": {
-                                              "name": "Butcher"
-                                            }
-                                          }
-                                        ]
-                                      }
-                                    }
-                                  ]
-                                }
-                              },
-                              {
-                                "First": {
-                                  "name": "Earth"
-                                },
-                                "Second": {
-                                  "name": "Pressure",
-                                  "children": [
-                                    {
-                                      "First": {
-                                        "name": "Air"
-                                      },
-                                      "Second": {
-                                        "name": "Air"
-                                      }
-                                    }
-                                  ]
-                                }
-                              }
-                            ]
-                          }
-                        },
-                        {
-                          "First": {
-                            "name": "Soil",
-                            "children": [
-                              {
-                                "First": {
-                                  "name": "Earth"
-                                },
-                                "Second": {
-                                  "name": "Organic matter",
-                                  "children": [
-                                    {
-                                      "First": {
-                                        "name": "Life"
-                                      },
-                                      "Second": {
-                                        "name": "Death",
-                                        "children": [
-                                          {
-                                            "First": {
-                                              "name": "Corpse",
-                                              "children": [
-                                                {
-                                                  "First": {
-                                                    "name": "Human"
-                                                  },
-                                                  "Second": {
-                                                    "name": "Bullet",
-                                                    "children": [
-                                                      {
-                                                        "First": {
-                                                          "name": "Gunpowder",
-                                                          "children": [
-                                                            {
-                                                              "First": {
-                                                                "name": "Fire"
-                                                              },
-                                                              "Second": {
-                                                                "name": "Dust",
+                                                                "name": "Puddle",
                                                                 "children": [
                                                                   {
                                                                     "First": {
-                                                                      "name": "Earth"
+                                                                      "name": "Water"
                                                                     },
                                                                     "Second": {
-                                                                      "name": "Air"
+                                                                      "name": "Water"
                                                                     }
                                                                   }
                                                                 ]
+                                                              },
+                                                              "Second": {
+                                                                "name": "Water"
                                                               }
                                                             }
                                                           ]
                                                         },
                                                         "Second": {
-                                                          "name": "Metal"
+                                                          "name": "Water"
                                                         }
                                                       }
                                                     ]
-                                                  }
-                                                }
-                                              ]
-                                            },
-                                            "Second": {
-                                              "name": "Philosophy"
-                                            }
-                                          }
-                                        ]
-                                      }
-                                    },
-                                    {
-                                      "First": {
-                                        "name": "Bacteria",
-                                        "children": [
-                                          {
-                                            "First": {
-                                              "name": "Life"
-                                            },
-                                            "Second": {
-                                              "name": "Mud",
-                                              "children": [
-                                                {
-                                                  "First": {
+                                                  },
+                                                  "Second": {
                                                     "name": "Water"
-                                                  },
-                                                  "Second": {
-                                                    "name": "Earth"
-                                                  }
-                                                }
-                                              ]
-                                            }
-                                          }
-                                        ]
-                                      },
-                                      "Second": {
-                                        "name": "Death"
-                                      }
-                                    }
-                                  ]
-                                }
-                              },
-                              {
-                                "First": {
-                                  "name": "Earth"
-                                },
-                                "Second": {
-                                  "name": "Life",
-                                  "children": [
-                                    {
-                                      "First": {
-                                        "name": "Primordial soup",
-                                        "children": [
-                                          {
-                                            "First": {
-                                              "name": "Lava",
-                                              "children": [
-                                                {
-                                                  "First": {
-                                                    "name": "Earth"
-                                                  },
-                                                  "Second": {
-                                                    "name": "Fire"
-                                                  }
-                                                }
-                                              ]
-                                            },
-                                            "Second": {
-                                              "name": "Ocean"
-                                            }
-                                          }
-                                        ]
-                                      },
-                                      "Second": {
-                                        "name": "Electricity"
-                                      }
-                                    },
-                                    {
-                                      "First": {
-                                        "name": "Primordial soup"
-                                      },
-                                      "Second": {
-                                        "name": "Energy",
-                                        "children": [
-                                          {
-                                            "First": {
-                                              "name": "Fire"
-                                            },
-                                            "Second": {
-                                              "name": "Fire"
-                                            }
-                                          }
-                                        ]
-                                      }
-                                    },
-                                    {
-                                      "First": {
-                                        "name": "Electricity"
-                                      },
-                                      "Second": {
-                                        "name": "Lake",
-                                        "children": [
-                                          {
-                                            "First": {
-                                              "name": "Pond",
-                                              "children": [
-                                                {
-                                                  "First": {
-                                                    "name": "Puddle",
-                                                    "children": [
-                                                      {
-                                                        "First": {
-                                                          "name": "Water"
-                                                        },
-                                                        "Second": {
-                                                          "name": "Water"
-                                                        }
-                                                      }
-                                                    ]
-                                                  },
-                                                  "Second": {
-                                                    "name": "Puddle"
                                                   }
                                                 }
                                               ]
@@ -359,12 +83,174 @@
                                       }
                                     }
                                   ]
+                                },
+                                "Second": {
+                                  "name": "Electricity",
+                                  "children": [
+                                    {
+                                      "First": {
+                                        "name": "Metal",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Stone",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Earth"
+                                                  },
+                                                  "Second": {
+                                                    "name": "Pressure",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Air"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Air"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            "Second": {
+                                              "name": "Fire"
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "Second": {
+                                        "name": "Lightning",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Electricity"
+                                            },
+                                            "Second": {
+                                              "name": "Cloud",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Atmosphere",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Air"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Planet",
+                                                          "children": [
+                                                            {
+                                                              "First": {
+                                                                "name": "Continent",
+                                                                "children": [
+                                                                  {
+                                                                    "First": {
+                                                                      "name": "Land",
+                                                                      "children": [
+                                                                        {
+                                                                          "First": {
+                                                                            "name": "Earth"
+                                                                          },
+                                                                          "Second": {
+                                                                            "name": "Earth"
+                                                                          }
+                                                                        }
+                                                                      ]
+                                                                    },
+                                                                    "Second": {
+                                                                      "name": "Earth"
+                                                                    }
+                                                                  }
+                                                                ]
+                                                              },
+                                                              "Second": {
+                                                                "name": "Continent"
+                                                              }
+                                                            }
+                                                          ]
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
                                 }
                               }
                             ]
                           },
                           "Second": {
-                            "name": "Soil"
+                            "name": "Land"
+                          }
+                        }
+                      ]
+                    },
+                    "Second": {
+                      "name": "Field",
+                      "children": [
+                        {
+                          "First": {
+                            "name": "Plow",
+                            "children": [
+                              {
+                                "First": {
+                                  "name": "Earth"
+                                },
+                                "Second": {
+                                  "name": "Metal"
+                                }
+                              }
+                            ]
+                          },
+                          "Second": {
+                            "name": "Earth"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "Second": {
+                "name": "Land"
+              }
+            }
+          ]
+        },
+        "Second": {
+          "name": "Mountain",
+          "children": [
+            {
+              "First": {
+                "name": "Earth"
+              },
+              "Second": {
+                "name": "Earthquake",
+                "children": [
+                  {
+                    "First": {
+                      "name": "Earth"
+                    },
+                    "Second": {
+                      "name": "Energy",
+                      "children": [
+                        {
+                          "First": {
+                            "name": "Fire"
+                          },
+                          "Second": {
+                            "name": "Fire"
                           }
                         }
                       ]
