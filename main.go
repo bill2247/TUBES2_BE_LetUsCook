@@ -42,7 +42,7 @@ func main() {
 		})
 	})
 
-	r.OPTIONS("/*any", func(c *gin.Context) {
+	r.OPTIONS("/api/search", func(c *gin.Context) {
 		c.Header("Access-Control-Allow-Origin", "https://let-us-cook-new.vercel.app/")
 		c.Header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
 		c.Header("Access-Control-Allow-Headers", "Content-Type, Authorization")
