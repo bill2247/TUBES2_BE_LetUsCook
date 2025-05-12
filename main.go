@@ -13,7 +13,7 @@ import (
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 
-	"let_us_cook/src/scrapping"
+	"let_us_cook/src/scraping"
 )
 
 type SearchRequest struct {
@@ -64,8 +64,6 @@ func main() {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "Algorithm must be 'bfs', 'dfs', or 'bidirectional' "})
 			return
 		}
-
-		
 
 		var result interface{}
 

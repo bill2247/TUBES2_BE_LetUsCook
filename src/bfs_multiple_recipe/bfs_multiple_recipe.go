@@ -3,9 +3,10 @@ package bfs_multiple_recipe
 import (
 	"fmt"
 	"let_us_cook/src/data_type"
-	"let_us_cook/src/scrapping"
+	"let_us_cook/src/scraping"
 	"strings"
 	"sync"
+	"let_us_cook/src/bfs_shortest"
 )
 
 type bfsTask struct {
@@ -54,7 +55,7 @@ func Bfs_multiple_recipe(url string, bound int) (*data_type.RecipeTree, int) {
 				visited[idx] = true
 				visitedMu.Unlock()
 
-				if Stop(idx, visited, depth) {
+				if idx <= 4 {
 					wg.Done()
 					continue
 				}
@@ -71,9 +72,12 @@ func Bfs_multiple_recipe(url string, bound int) (*data_type.RecipeTree, int) {
 					countMu.Lock()
 					if count >= bound {
 						countMu.Unlock()
+						newRoot, nodeAddition := completeTheRoot(root)
+						root = newRoot
+						countNode += nodeAddition
 						break
 					}
-					if firstIdx <= 4 && secondIdx <= 4 {
+					if countRecipe(root) >= bound {
 						count++
 					}
 					countMu.Unlock()
@@ -101,10 +105,6 @@ func Bfs_multiple_recipe(url string, bound int) (*data_type.RecipeTree, int) {
 	PruneNonTerminalParallel(root)
 
 	return root, countNode // debugging
-}
-
-func Stop(idx int, visited []bool, depth int) bool {
-	return idx <= 4
 }
 
 // ------------------------- PARALLEL PRUNE ----------------------------
@@ -207,7 +207,7 @@ func nextPrefix(isTail bool) string {
 }
 
 func countRecipe(t *data_type.RecipeTree) int {
-	currentId := scrapping.MapperIdxElm[t.Name]
+	currentId := scrapping.MapperNameToIdx[t.Name]
 
 	if currentId == 0 || currentId == 1 || currentId == 2 || currentId == 3 {
 		return 1
@@ -225,4 +225,23 @@ func countRecipe(t *data_type.RecipeTree) int {
 		totalWays += countFirst * countSecond
 	}
 	return totalWays
+}
+
+func completeTheRoot(root *data_type.RecipeTree) (*data_type.RecipeTree, int) {
+	idx := scrapping.MapperNameToIdx[root.Name]
+	if idx > 4 || len(root.Children) == 0 {
+		newRoot, nodeCount := bfs_shortest.FindShortestPath(root.Name)
+		return newRoot, nodeCount
+	} else {
+		nodeCount := 0
+		for i := 0; i < len(root.Children); i++ {
+			firstRecipe, firstNodeCount := completeTheRoot(root.Children[i].First)
+			secondRecipe, secondNodeCount := completeTheRoot(root.Children[i].Second)
+
+			root.Children[i].First = firstRecipe
+			root.Children[i].Second = secondRecipe
+			nodeCount += firstNodeCount + secondNodeCount
+		}
+		return root, nodeCount
+	}
 }

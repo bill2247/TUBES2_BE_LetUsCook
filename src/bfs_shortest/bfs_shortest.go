@@ -3,7 +3,7 @@ package bfs_shortest
 import (
 	"fmt"
 	"let_us_cook/src/data_type"
-	"let_us_cook/src/scrapping"
+	"let_us_cook/src/scraping"
 	"strings"
 )
 

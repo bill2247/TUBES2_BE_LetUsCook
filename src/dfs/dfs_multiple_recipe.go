@@ -3,7 +3,7 @@ package dfs
 import (
 	"fmt"
 	"let_us_cook/src/data_type"
-	"let_us_cook/src/scrapping"
+	"let_us_cook/src/scraping"
 	"sync"
 )
 
@@ -121,7 +121,7 @@ func DFSMultipleEntryPoint(url string) (*data_type.RecipeTree, int) {
 		return &data_type.RecipeTree{Name: scrapping.MapperIdxToName[idx], Children: nil}, 1
 	}
 	root := &data_type.RecipeTree{Name: scrapping.MapperIdxToName[idx]}
-	GlobalCounter.SetCounter(scrapping.MapperIdxElm[root.Name], 100)
+	GlobalCounter.SetCounter(scrapping.MapperNameToIdx[root.Name], 100)
 
 	var wg sync.WaitGroup
 	wg.Add(1)
