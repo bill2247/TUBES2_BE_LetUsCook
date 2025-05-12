@@ -1,19 +1,17 @@
 package main
 
 import (
-	"encoding/json" // Tambahan
-	"let_us_cook/src/bfs_multiple_recipe"
-	"let_us_cook/src/bfs_shortest"
-	"let_us_cook/src/dfs"
+	"encoding/json" 
 	"log"
 	"net/http"
 	"os"
 	"time"
-
+	
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-
-	"let_us_cook/src/scrapping"
+	
+	"let_us_cook/src/algorithm"
+	"let_us_cook/src/scraping"
 )
 
 type SearchRequest struct {
@@ -72,8 +70,6 @@ func main() {
 			return
 		}
 
-		
-
 		var result interface{}
 
 		if req.Algorithm == "bfs" {
@@ -82,7 +78,7 @@ func main() {
 
 				// hitung durasi
 				startTime := time.Now()
-				tree, count := bfs_multiple_recipe.Bfs_multiple_recipe(req.Query, req.CountRicipe)
+				tree, count := algorithm.Bfs_multiple_recipe(req.Query, req.CountRicipe)
 				duration := time.Since(startTime)
 				if tree == nil {
 					log.Printf("BFS returned nil for query: %s", req.Query)
@@ -112,7 +108,7 @@ func main() {
 				log.Printf("Calling BFS multiple recipe with query: %s", req.Query)
 				// hitung durasi
 				startTime := time.Now()
-				tree, count := bfs_shortest.FindShortestPath(req.Query)
+				tree, count := algorithm.FindShortestPath(req.Query)
 				duration := time.Since(startTime)
 
 				if tree == nil {
@@ -144,7 +140,7 @@ func main() {
 				log.Printf("Calling BFS multiple recipe with query: %s", req.Query)
 				// hitung durasi
 				startTime := time.Now()
-				tree, count := dfs.DFSMultipleEntryPoint(req.Query)
+				tree, count := algorithm.DFSMultipleEntryPoint(req.Query)
 				duration := time.Since(startTime)
 				if tree == nil {
 					log.Printf("BFS returned nil for query: %s", req.Query)
@@ -173,7 +169,7 @@ func main() {
 				log.Printf("Calling BFS multiple recipe with query: %s", req.Query)
 				// hitung durasi
 				startTime := time.Now()
-				tree, count := dfs.DFSSingleEntryPoint(req.Query)
+				tree, count := algorithm.DFSSingleEntryPoint(req.Query)
 				duration := time.Since(startTime)
 				if tree == nil {
 					log.Printf("BFS returned nil for query: %s", req.Query)

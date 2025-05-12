@@ -1,9 +1,9 @@
-package dfs
+package algorithm
 
 import (
 	"fmt"
 	"let_us_cook/src/data_type"
-	"let_us_cook/src/scrapping"
+	"let_us_cook/src/scraping"
 	"strings"
 )
 
@@ -14,7 +14,7 @@ func CreateRecipeTreeFromName(name string) *data_type.RecipeTree {
 
 func CreateRecipeTreeFromId(id int) *data_type.RecipeTree {
 	rootChild := []*data_type.Pair_recipe{}
-	name := scrapping.MapperElmIdx[id]
+	name := scrapping.MapperIdxToName[id]
 	return &data_type.RecipeTree{Name: name, Children: rootChild}
 }
 
@@ -32,7 +32,7 @@ func PrintTree(t *data_type.RecipeTree, indentCount int) {
 }
 
 func NodeCount(t *data_type.RecipeTree) int {
-	currentId := scrapping.MapperIdxElm[t.Name]
+	currentId := scrapping.MapperNameToIdx[t.Name]
 	if currentId == 0 || currentId == 1 || currentId == 2 || currentId == 3 || getTier(currentId) == 9999 {
 		return 1
 	}

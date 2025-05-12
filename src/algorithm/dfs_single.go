@@ -1,13 +1,13 @@
-package dfs
+package algorithm
 
 import (
 	"fmt"
 	"let_us_cook/src/data_type"
-	"let_us_cook/src/scrapping"
+	"let_us_cook/src/scraping"
 )
 
 func DFSSingle(t *data_type.RecipeTree) {
-	currentId := scrapping.MapperIdxElm[t.Name]
+	currentId := scrapping.MapperNameToIdx[t.Name]
 
 	// basis
 	if currentId == 0 || currentId == 1 || currentId == 2 || currentId == 3 {
@@ -15,7 +15,7 @@ func DFSSingle(t *data_type.RecipeTree) {
 	}
 
 	// rekurens
-	childrenList := scrapping.MapperRecipe1[currentId]
+	childrenList := scrapping.MapperIdxToRecipes[currentId]
 	for i := 0; i < len(childrenList); i++ {
 		idFirst := childrenList[i].First
 		idSecond := childrenList[i].Second

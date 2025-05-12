@@ -1,9 +1,9 @@
-package dfs
+package algorithm
 
 import (
 	"fmt"
 	"let_us_cook/src/data_type"
-	"let_us_cook/src/scrapping"
+	"let_us_cook/src/scraping"
 	"sync"
 )
 
@@ -51,7 +51,7 @@ func DFSMultiple(t *data_type.RecipeTree, wg *sync.WaitGroup) int {
 		defer wg.Done()
 	}
 
-	currentId := scrapping.MapperIdxElm[t.Name]
+	currentId := scrapping.MapperNameToIdx[t.Name]
 
 	// basis
 	if currentId == 0 || currentId == 1 || currentId == 2 || currentId == 3 {
@@ -59,7 +59,7 @@ func DFSMultiple(t *data_type.RecipeTree, wg *sync.WaitGroup) int {
 	}
 
 	// rekurens
-	childrenList := scrapping.MapperRecipe1[currentId]
+	childrenList := scrapping.MapperIdxToRecipes[currentId]
 
 	// multithreading
 	totalWays := 0
@@ -121,7 +121,7 @@ func DFSMultipleEntryPoint(url string) (*data_type.RecipeTree, int) {
 		return &data_type.RecipeTree{Name: scrapping.MapperIdxToName[idx], Children: nil}, 1
 	}
 	root := &data_type.RecipeTree{Name: scrapping.MapperIdxToName[idx]}
-	GlobalCounter.SetCounter(scrapping.MapperIdxElm[root.Name], 100)
+	GlobalCounter.SetCounter(scrapping.MapperNameToIdx[root.Name], 100)
 
 	var wg sync.WaitGroup
 	wg.Add(1)
@@ -138,7 +138,7 @@ func DFSMultipleSerial(t *data_type.RecipeTree) int {
 		return 0
 	}
 
-	currentId := scrapping.MapperIdxElm[t.Name]
+	currentId := scrapping.MapperNameToIdx[t.Name]
 
 	// basis
 	if currentId == 0 || currentId == 1 || currentId == 2 || currentId == 3 {
@@ -146,7 +146,7 @@ func DFSMultipleSerial(t *data_type.RecipeTree) int {
 	}
 
 	// rekurens
-	childrenList := scrapping.MapperRecipe1[currentId]
+	childrenList := scrapping.MapperIdxToRecipes[currentId]
 	totalWays := 0
 	for i := 0; i < len(childrenList); i++ {
 		if i > 0 && GlobalCounter.IsLimitReached() {
