@@ -26,7 +26,7 @@ func main() {
 	r := gin.Default()
 
 	r.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"https://let-us-cook-new.vercel.app/", "http://localhost:3000"},
+		AllowOrigins:     []string{"https://tubes2beletuscook-production.up.railway.app:8080", "https://let-us-cook-new.vercel.app", "http://localhost:3000"},
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowHeaders:     []string{"Origin", "Content-Type", "Accept", "Authorization"},
 		ExposeHeaders:    []string{"Content-Length"},
@@ -41,10 +41,13 @@ func main() {
 	})
 
 	r.OPTIONS("/api/search", func(c *gin.Context) {
-		c.Header("Access-Control-Allow-Origin", "https://let-us-cook-new.vercel.app/")
-		c.Header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
-		c.Header("Access-Control-Allow-Headers", "Content-Type, Authorization")
-		c.Status(http.StatusNoContent)
+    origin := c.GetHeader("Origin")
+    if origin == "https://let-us-cook-new.vercel.app" || origin == "http://localhost:3000" {
+        c.Header("Access-Control-Allow-Origin", origin)
+    }
+    c.Header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
+    c.Header("Access-Control-Allow-Headers", "Content-Type, Authorization")
+    c.Status(http.StatusNoContent)
 	})
 
 	r.POST("/api/search", func(c *gin.Context) {
