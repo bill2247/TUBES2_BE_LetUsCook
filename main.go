@@ -28,7 +28,7 @@ func main() {
 	r := gin.Default()
 
 	r.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"https://let-us-cook-new.vercel.app"},
+		AllowOrigins:     []string{"https://let-us-cook-new.vercel.app", "http://localhost:3000"},
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowHeaders:     []string{"Origin", "Content-Type", "Accept", "Authorization"},
 		ExposeHeaders:    []string{"Content-Length"},
@@ -40,6 +40,10 @@ func main() {
 		c.JSON(http.StatusOK, gin.H{
 			"message": "pong",
 		})
+	})
+
+	r.OPTIONS("/api/search", func(c *gin.Context) {
+    c.Status(http.StatusNoContent) 
 	})
 
 	r.POST("/api/search", func(c *gin.Context) {
