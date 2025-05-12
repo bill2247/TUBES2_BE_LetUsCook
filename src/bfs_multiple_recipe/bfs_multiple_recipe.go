@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"let_us_cook/src/data_type"
 	"let_us_cook/src/scrapping"
-	"sync"
 	"strings"
+	"sync"
 )
 
 type bfsTask struct {
@@ -78,7 +78,7 @@ func Bfs_multiple_recipe(url string, bound int) (*data_type.RecipeTree, int) {
 					}
 					countMu.Unlock()
 					// itung count node
-					countNode += 2;
+					countNode += 2
 					firstNode := &data_type.RecipeTree{Name: scrapping.MapperIdxToName[firstIdx]}
 					secondNode := &data_type.RecipeTree{Name: scrapping.MapperIdxToName[secondIdx]}
 					pair := &data_type.Pair_recipe{First: firstNode, Second: secondNode}
@@ -157,7 +157,6 @@ func isBasicElement(node *data_type.RecipeTree) bool {
 	return ok && idx <= 4
 }
 
-
 func TreeToString(node *data_type.RecipeTree) string {
 	var builder strings.Builder
 	displayTreeToBuilder(node, "", true, &builder)
@@ -205,4 +204,25 @@ func nextPrefix(isTail bool) string {
 		return "    "
 	}
 	return "│   "
+}
+
+func countRecipe(t *data_type.RecipeTree) int {
+	currentId := scrapping.MapperIdxElm[t.Name]
+
+	if currentId == 0 || currentId == 1 || currentId == 2 || currentId == 3 {
+		return 1
+	}
+
+	// rekurens
+	totalWays := 0
+	for i := 0; i < len(t.Children); i++ {
+		firstRecipe := t.Children[i].First
+		secondRecipe := t.Children[i].Second
+
+		countFirst := countRecipe(firstRecipe)
+		countSecond := countRecipe(secondRecipe)
+
+		totalWays += countFirst * countSecond
+	}
+	return totalWays
 }
