@@ -26,7 +26,7 @@ func main() {
 	r := gin.Default()
 
 	r.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"https://tubes2beletuscook-production.up.railway.app:8080", "https://let-us-cook-new.vercel.app", "http://localhost:3000"},
+		AllowOrigins:     []string{"https://tubes2beletuscook-production.up.railway.app", "https://let-us-cook-new.vercel.app", "http://localhost:3000"},
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowHeaders:     []string{"Origin", "Content-Type", "Accept", "Authorization"},
 		ExposeHeaders:    []string{"Content-Length"},
