@@ -36,7 +36,7 @@ func main() {
 		MaxAge:           12 * time.Hour,
 	}))
 
-	r.GET("/api/ping", func(c *gin.Context) {
+	r.GET("/api/search", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"message": "pong",
 		})
