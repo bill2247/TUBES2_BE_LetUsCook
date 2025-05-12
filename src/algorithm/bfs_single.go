@@ -1,10 +1,9 @@
-package bfs_shortest 
+package algorithm 
 
 import (
 	"fmt"
 	"let_us_cook/src/data_type"
 	"let_us_cook/src/scraping"
-	"strings"
 )
 
 // fungsi utama untuk mencari jalur terpendek
@@ -163,127 +162,5 @@ func BuildRecipeTree(node *data_type.RecipeTree, idx int, bestRecipes map[int]*d
 	
 	if secondIdx > 4 {
 		BuildRecipeTree(secondNode, secondIdx, bestRecipes, visited)
-	}
-}
-
-func isBasicElement(node *data_type.RecipeTree) bool {
-	idx, ok := scrapping.MapperNameToIdx[node.Name]
-	return ok && idx <= 4
-}
-
-// cut cabang yang tidak mengarah ke elemen dasar
-func pruneTree(node *data_type.RecipeTree) bool {
-	if node == nil {
-		return false
-	}
-	
-	if len(node.Children) == 0 {
-		return isBasicElement(node)
-	}
-	
-	validChildren := []*data_type.Pair_recipe{}
-	for _, pair := range node.Children {
-		firstValid := pruneTree(pair.First)
-		secondValid := pruneTree(pair.Second)
-		
-		// jika keduanya elemen dasar atau keduanya valid
-		if (isBasicElement(pair.First) && isBasicElement(pair.Second)) || 
-		   (firstValid && secondValid) {
-			validChildren = append(validChildren, pair)
-		}
-	}
-	
-	node.Children = validChildren
-	return len(validChildren) > 0
-}
-
-// fungsi eksternal untuk memangkas tree
-func PruneNonTerminal(root *data_type.RecipeTree) {
-	pruneTree(root)
-}
-
-// menampilkan tree ke konsol
-func DisplayTree(node *data_type.RecipeTree, prefix string, isTail bool) {
-	if node == nil {
-		return
-	}
-	
-	fmt.Println(prefix + branchSymbol(isTail) + node.Name)
-	
-	children := node.Children
-	for i, pair := range children {
-		isLast := i == len(children)-1
-		DisplayTree(pair.First, prefix+nextPrefix(isTail), false)
-		DisplayTree(pair.Second, prefix+nextPrefix(isTail), isLast)
-	}
-}
-
-func branchSymbol(isTail bool) string {
-	if isTail {
-		return "└── "
-	}
-	return "├── "
-}
-
-func nextPrefix(isTail bool) string {
-	if isTail {
-		return "    "
-	}
-	return "│   "
-}
-
-// konversi tree ke string
-func TreeToString(node *data_type.RecipeTree) string {
-	var builder strings.Builder
-	displayTreeToBuilder(node, "", true, &builder)
-	return builder.String()
-}
-
-func displayTreeToBuilder(node *data_type.RecipeTree, prefix string, isTail bool, builder *strings.Builder) {
-	if node == nil {
-		return
-	}
-	
-	builder.WriteString(prefix + branchSymbol(isTail) + node.Name + "\n")
-	
-	children := node.Children
-	for i, pair := range children {
-		isLast := i == len(children)-1
-		displayTreeToBuilder(pair.First, prefix+nextPrefix(isTail), false, builder)
-		displayTreeToBuilder(pair.Second, prefix+nextPrefix(isTail), isLast, builder)
-	}
-}
-
-// mengekstrak langkah-langkah resep dan mengembalikan dalam bentuk string
-func GetRecipeSteps(root *data_type.RecipeTree) string {
-	if root == nil {
-		return "Resep tidak ditemukan"
-	}
-	
-	var steps []string
-	extractSteps(root, &steps)
-	
-	result := "Langkah-langkah membuat " + root.Name + ":\n"
-	for i, step := range steps {
-		result += fmt.Sprintf("%d. %s\n", i+1, step)
-	}
-	
-	return result
-}
-
-// langkah-langkah resep dari tree
-func extractSteps(node *data_type.RecipeTree, steps *[]string) {
-	if node == nil || len(node.Children) == 0 {
-		return
-	}
-	
-	for _, pair := range node.Children {
-		// tambahkan langkah resep
-		step := fmt.Sprintf("%s = %s + %s", node.Name, pair.First.Name, pair.Second.Name)
-		*steps = append(*steps, step)
-		
-		// rekursif untuk bahan-bahan
-		extractSteps(pair.First, steps)
-		extractSteps(pair.Second, steps)
 	}
 }

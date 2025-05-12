@@ -1,4 +1,4 @@
-package dfs
+package algorithm
 
 import (
 	"fmt"

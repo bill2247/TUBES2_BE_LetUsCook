@@ -1,12 +1,10 @@
-package bfs_multiple_recipe
+package algorithm
 
 import (
 	"fmt"
 	"let_us_cook/src/data_type"
 	"let_us_cook/src/scraping"
-	"strings"
 	"sync"
-	"let_us_cook/src/bfs_shortest"
 )
 
 type bfsTask struct {
@@ -39,7 +37,7 @@ func Bfs_multiple_recipe(url string, bound int) (*data_type.RecipeTree, int) {
 	queue <- bfsTask{Idx: idx, Node: root, Depth: 0}
 	wg.Add(1)
 
-	for i := 0; i < 8; i++ { // 8 workers
+	for i := 0; i < 8; i++ { 
 		go func() {
 			for task := range queue {
 				idx := task.Idx
@@ -81,7 +79,6 @@ func Bfs_multiple_recipe(url string, bound int) (*data_type.RecipeTree, int) {
 						count++
 					}
 					countMu.Unlock()
-					// itung count node
 					countNode += 2
 					firstNode := &data_type.RecipeTree{Name: scrapping.MapperIdxToName[firstIdx]}
 					secondNode := &data_type.RecipeTree{Name: scrapping.MapperIdxToName[secondIdx]}
@@ -100,14 +97,51 @@ func Bfs_multiple_recipe(url string, bound int) (*data_type.RecipeTree, int) {
 	wg.Wait()
 	close(queue)
 
-	// Prune setelah BFS selesai
 	PruneNonTerminalParallel(root)
 	PruneNonTerminalParallel(root)
 
-	return root, countNode // debugging
+	return root, countNode 
 }
 
-// ------------------------- PARALLEL PRUNE ----------------------------
+
+func countRecipe(t *data_type.RecipeTree) int {
+	currentId := scrapping.MapperNameToIdx[t.Name]
+
+	if currentId == 0 || currentId == 1 || currentId == 2 || currentId == 3 {
+		return 1
+	}
+
+	totalWays := 0
+	for i := 0; i < len(t.Children); i++ {
+		firstRecipe := t.Children[i].First
+		secondRecipe := t.Children[i].Second
+
+		countFirst := countRecipe(firstRecipe)
+		countSecond := countRecipe(secondRecipe)
+
+		totalWays += countFirst * countSecond
+	}
+	return totalWays
+}
+
+func completeTheRoot(root *data_type.RecipeTree) (*data_type.RecipeTree, int) {
+	idx := scrapping.MapperNameToIdx[root.Name]
+	if idx > 4 || len(root.Children) == 0 {
+		newRoot, nodeCount := FindShortestPath(root.Name)
+		return newRoot, nodeCount
+	} else {
+		nodeCount := 0
+		for i := 0; i < len(root.Children); i++ {
+			firstRecipe, firstNodeCount := completeTheRoot(root.Children[i].First)
+			secondRecipe, secondNodeCount := completeTheRoot(root.Children[i].Second)
+
+			root.Children[i].First = firstRecipe
+			root.Children[i].Second = secondRecipe
+			nodeCount += firstNodeCount + secondNodeCount
+		}
+		return root, nodeCount
+	}
+}
 
 func PruneNonTerminalParallel(root *data_type.RecipeTree) {
 	pruneTreeParallel(root)
@@ -155,93 +189,4 @@ func pruneTreeParallel(node *data_type.RecipeTree) bool {
 func isBasicElement(node *data_type.RecipeTree) bool {
 	idx, ok := scrapping.MapperNameToIdx[node.Name]
 	return ok && idx <= 4
-}
-
-func TreeToString(node *data_type.RecipeTree) string {
-	var builder strings.Builder
-	displayTreeToBuilder(node, "", true, &builder)
-	return builder.String()
-}
-
-func displayTreeToBuilder(node *data_type.RecipeTree, prefix string, isTail bool, builder *strings.Builder) {
-	if node == nil {
-		return
-	}
-	builder.WriteString(prefix + branchSymbol(isTail) + node.Name + "\n")
-
-	children := node.Children
-	for i, pair := range children {
-		isLast := i == len(children)-1
-		displayTreeToBuilder(pair.First, prefix+nextPrefix(isTail), false, builder)
-		displayTreeToBuilder(pair.Second, prefix+nextPrefix(isTail), isLast, builder)
-	}
-}
-
-// DisplayTree dan fungsi pendukung tetap sama
-func DisplayTree(node *data_type.RecipeTree, prefix string, isTail bool) {
-	if node == nil {
-		return
-	}
-	fmt.Println(prefix + branchSymbol(isTail) + node.Name)
-
-	children := node.Children
-	for i, pair := range children {
-		isLast := i == len(children)-1
-		DisplayTree(pair.First, prefix+nextPrefix(isTail), false)
-		DisplayTree(pair.Second, prefix+nextPrefix(isTail), isLast)
-	}
-}
-
-func branchSymbol(isTail bool) string {
-	if isTail {
-		return "└── "
-	}
-	return "├── "
-}
-
-func nextPrefix(isTail bool) string {
-	if isTail {
-		return "    "
-	}
-	return "│   "
-}
-
-func countRecipe(t *data_type.RecipeTree) int {
-	currentId := scrapping.MapperNameToIdx[t.Name]
-
-	if currentId == 0 || currentId == 1 || currentId == 2 || currentId == 3 {
-		return 1
-	}
-
-	// rekurens
-	totalWays := 0
-	for i := 0; i < len(t.Children); i++ {
-		firstRecipe := t.Children[i].First
-		secondRecipe := t.Children[i].Second
-
-		countFirst := countRecipe(firstRecipe)
-		countSecond := countRecipe(secondRecipe)
-
-		totalWays += countFirst * countSecond
-	}
-	return totalWays
-}
-
-func completeTheRoot(root *data_type.RecipeTree) (*data_type.RecipeTree, int) {
-	idx := scrapping.MapperNameToIdx[root.Name]
-	if idx > 4 || len(root.Children) == 0 {
-		newRoot, nodeCount := bfs_shortest.FindShortestPath(root.Name)
-		return newRoot, nodeCount
-	} else {
-		nodeCount := 0
-		for i := 0; i < len(root.Children); i++ {
-			firstRecipe, firstNodeCount := completeTheRoot(root.Children[i].First)
-			secondRecipe, secondNodeCount := completeTheRoot(root.Children[i].Second)
-
-			root.Children[i].First = firstRecipe
-			root.Children[i].Second = secondRecipe
-			nodeCount += firstNodeCount + secondNodeCount
-		}
-		return root, nodeCount
-	}
 }
