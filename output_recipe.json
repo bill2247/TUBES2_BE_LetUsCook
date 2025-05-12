@@ -1,0 +1,2889 @@
+{
+  "count": 605,
+  "duration": 0.0030145,
+  "tree": {
+    "name": "Duck",
+    "children": [
+      {
+        "First": {
+          "name": "Bird",
+          "children": [
+            {
+              "First": {
+                "name": "Animal",
+                "children": [
+                  {
+                    "First": {
+                      "name": "Life",
+                      "children": [
+                        {
+                          "First": {
+                            "name": "Primordial soup",
+                            "children": [
+                              {
+                                "First": {
+                                  "name": "Lava",
+                                  "children": [
+                                    {
+                                      "First": {
+                                        "name": "Earth"
+                                      },
+                                      "Second": {
+                                        "name": "Fire"
+                                      }
+                                    }
+                                  ]
+                                },
+                                "Second": {
+                                  "name": "Sea",
+                                  "children": [
+                                    {
+                                      "First": {
+                                        "name": "Lake",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            "Second": {
+                                              "name": "Water"
+                                            }
+                                          },
+                                          {
+                                            "First": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            "Second": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "Second": {
+                                        "name": "Lake",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            "Second": {
+                                              "name": "Water"
+                                            }
+                                          },
+                                          {
+                                            "First": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            "Second": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    {
+                                      "First": {
+                                        "name": "Lake",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            "Second": {
+                                              "name": "Water"
+                                            }
+                                          },
+                                          {
+                                            "First": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            "Second": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "Second": {
+                                        "name": "Water"
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              {
+                                "First": {
+                                  "name": "Planet",
+                                  "children": [
+                                    {
+                                      "First": {
+                                        "name": "Continent",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Land",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Earth"
+                                                  },
+                                                  "Second": {
+                                                    "name": "Earth"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            "Second": {
+                                              "name": "Land",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Earth"
+                                                  },
+                                                  "Second": {
+                                                    "name": "Earth"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          {
+                                            "First": {
+                                              "name": "Land",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Earth"
+                                                  },
+                                                  "Second": {
+                                                    "name": "Earth"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            "Second": {
+                                              "name": "Earth"
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "Second": {
+                                        "name": "Continent",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Land",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Earth"
+                                                  },
+                                                  "Second": {
+                                                    "name": "Earth"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            "Second": {
+                                              "name": "Land",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Earth"
+                                                  },
+                                                  "Second": {
+                                                    "name": "Earth"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          {
+                                            "First": {
+                                              "name": "Land",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Earth"
+                                                  },
+                                                  "Second": {
+                                                    "name": "Earth"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            "Second": {
+                                              "name": "Earth"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                },
+                                "Second": {
+                                  "name": "Sea",
+                                  "children": [
+                                    {
+                                      "First": {
+                                        "name": "Lake",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            "Second": {
+                                              "name": "Water"
+                                            }
+                                          },
+                                          {
+                                            "First": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            "Second": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "Second": {
+                                        "name": "Lake",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            "Second": {
+                                              "name": "Water"
+                                            }
+                                          },
+                                          {
+                                            "First": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            "Second": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    {
+                                      "First": {
+                                        "name": "Lake",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            "Second": {
+                                              "name": "Water"
+                                            }
+                                          },
+                                          {
+                                            "First": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            "Second": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "Second": {
+                                        "name": "Water"
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          },
+                          "Second": {
+                            "name": "Time"
+                          }
+                        },
+                        {
+                          "First": {
+                            "name": "Primordial soup",
+                            "children": [
+                              {
+                                "First": {
+                                  "name": "Lava",
+                                  "children": [
+                                    {
+                                      "First": {
+                                        "name": "Earth"
+                                      },
+                                      "Second": {
+                                        "name": "Fire"
+                                      }
+                                    }
+                                  ]
+                                },
+                                "Second": {
+                                  "name": "Sea",
+                                  "children": [
+                                    {
+                                      "First": {
+                                        "name": "Lake",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            "Second": {
+                                              "name": "Water"
+                                            }
+                                          },
+                                          {
+                                            "First": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            "Second": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "Second": {
+                                        "name": "Lake",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            "Second": {
+                                              "name": "Water"
+                                            }
+                                          },
+                                          {
+                                            "First": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            "Second": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    {
+                                      "First": {
+                                        "name": "Lake",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            "Second": {
+                                              "name": "Water"
+                                            }
+                                          },
+                                          {
+                                            "First": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            "Second": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "Second": {
+                                        "name": "Water"
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              {
+                                "First": {
+                                  "name": "Planet",
+                                  "children": [
+                                    {
+                                      "First": {
+                                        "name": "Continent",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Land",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Earth"
+                                                  },
+                                                  "Second": {
+                                                    "name": "Earth"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            "Second": {
+                                              "name": "Land",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Earth"
+                                                  },
+                                                  "Second": {
+                                                    "name": "Earth"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          {
+                                            "First": {
+                                              "name": "Land",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Earth"
+                                                  },
+                                                  "Second": {
+                                                    "name": "Earth"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            "Second": {
+                                              "name": "Earth"
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "Second": {
+                                        "name": "Continent",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Land",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Earth"
+                                                  },
+                                                  "Second": {
+                                                    "name": "Earth"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            "Second": {
+                                              "name": "Land",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Earth"
+                                                  },
+                                                  "Second": {
+                                                    "name": "Earth"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          {
+                                            "First": {
+                                              "name": "Land",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Earth"
+                                                  },
+                                                  "Second": {
+                                                    "name": "Earth"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            "Second": {
+                                              "name": "Earth"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                },
+                                "Second": {
+                                  "name": "Sea",
+                                  "children": [
+                                    {
+                                      "First": {
+                                        "name": "Lake",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            "Second": {
+                                              "name": "Water"
+                                            }
+                                          },
+                                          {
+                                            "First": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            "Second": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "Second": {
+                                        "name": "Lake",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            "Second": {
+                                              "name": "Water"
+                                            }
+                                          },
+                                          {
+                                            "First": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            "Second": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    {
+                                      "First": {
+                                        "name": "Lake",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            "Second": {
+                                              "name": "Water"
+                                            }
+                                          },
+                                          {
+                                            "First": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            "Second": {
+                                              "name": "Pond",
+                                              "children": [
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                {
+                                                  "First": {
+                                                    "name": "Puddle",
+                                                    "children": [
+                                                      {
+                                                        "First": {
+                                                          "name": "Water"
+                                                        },
+                                                        "Second": {
+                                                          "name": "Water"
+                                                        }
+                                                      }
+                                                    ]
+                                                  },
+                                                  "Second": {
+                                                    "name": "Water"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "Second": {
+                                        "name": "Water"
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          },
+                          "Second": {
+                            "name": "Volcano",
+                            "children": [
+                              {
+                                "First": {
+                                  "name": "Lava",
+                                  "children": [
+                                    {
+                                      "First": {
+                                        "name": "Earth"
+                                      },
+                                      "Second": {
+                                        "name": "Fire"
+                                      }
+                                    }
+                                  ]
+                                },
+                                "Second": {
+                                  "name": "Earth"
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    },
+                    "Second": {
+                      "name": "Land",
+                      "children": [
+                        {
+                          "First": {
+                            "name": "Earth"
+                          },
+                          "Second": {
+                            "name": "Earth"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "Second": {
+                "name": "Sky",
+                "children": [
+                  {
+                    "First": {
+                      "name": "Sun",
+                      "children": [
+                        {
+                          "First": {
+                            "name": "Planet",
+                            "children": [
+                              {
+                                "First": {
+                                  "name": "Continent",
+                                  "children": [
+                                    {
+                                      "First": {
+                                        "name": "Land",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Earth"
+                                            },
+                                            "Second": {
+                                              "name": "Earth"
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "Second": {
+                                        "name": "Land",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Earth"
+                                            },
+                                            "Second": {
+                                              "name": "Earth"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    {
+                                      "First": {
+                                        "name": "Land",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Earth"
+                                            },
+                                            "Second": {
+                                              "name": "Earth"
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "Second": {
+                                        "name": "Earth"
+                                      }
+                                    }
+                                  ]
+                                },
+                                "Second": {
+                                  "name": "Continent",
+                                  "children": [
+                                    {
+                                      "First": {
+                                        "name": "Land",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Earth"
+                                            },
+                                            "Second": {
+                                              "name": "Earth"
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "Second": {
+                                        "name": "Land",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Earth"
+                                            },
+                                            "Second": {
+                                              "name": "Earth"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    {
+                                      "First": {
+                                        "name": "Land",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Earth"
+                                            },
+                                            "Second": {
+                                              "name": "Earth"
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "Second": {
+                                        "name": "Earth"
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          },
+                          "Second": {
+                            "name": "Fire"
+                          }
+                        }
+                      ]
+                    },
+                    "Second": {
+                      "name": "Atmosphere",
+                      "children": [
+                        {
+                          "First": {
+                            "name": "Air"
+                          },
+                          "Second": {
+                            "name": "Planet",
+                            "children": [
+                              {
+                                "First": {
+                                  "name": "Continent",
+                                  "children": [
+                                    {
+                                      "First": {
+                                        "name": "Land",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Earth"
+                                            },
+                                            "Second": {
+                                              "name": "Earth"
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "Second": {
+                                        "name": "Land",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Earth"
+                                            },
+                                            "Second": {
+                                              "name": "Earth"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    {
+                                      "First": {
+                                        "name": "Land",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Earth"
+                                            },
+                                            "Second": {
+                                              "name": "Earth"
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "Second": {
+                                        "name": "Earth"
+                                      }
+                                    }
+                                  ]
+                                },
+                                "Second": {
+                                  "name": "Continent",
+                                  "children": [
+                                    {
+                                      "First": {
+                                        "name": "Land",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Earth"
+                                            },
+                                            "Second": {
+                                              "name": "Earth"
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "Second": {
+                                        "name": "Land",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Earth"
+                                            },
+                                            "Second": {
+                                              "name": "Earth"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    {
+                                      "First": {
+                                        "name": "Land",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Earth"
+                                            },
+                                            "Second": {
+                                              "name": "Earth"
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "Second": {
+                                        "name": "Earth"
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "First": {
+                      "name": "Sun",
+                      "children": [
+                        {
+                          "First": {
+                            "name": "Planet",
+                            "children": [
+                              {
+                                "First": {
+                                  "name": "Continent",
+                                  "children": [
+                                    {
+                                      "First": {
+                                        "name": "Land",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Earth"
+                                            },
+                                            "Second": {
+                                              "name": "Earth"
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "Second": {
+                                        "name": "Land",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Earth"
+                                            },
+                                            "Second": {
+                                              "name": "Earth"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    {
+                                      "First": {
+                                        "name": "Land",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Earth"
+                                            },
+                                            "Second": {
+                                              "name": "Earth"
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "Second": {
+                                        "name": "Earth"
+                                      }
+                                    }
+                                  ]
+                                },
+                                "Second": {
+                                  "name": "Continent",
+                                  "children": [
+                                    {
+                                      "First": {
+                                        "name": "Land",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Earth"
+                                            },
+                                            "Second": {
+                                              "name": "Earth"
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "Second": {
+                                        "name": "Land",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Earth"
+                                            },
+                                            "Second": {
+                                              "name": "Earth"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    {
+                                      "First": {
+                                        "name": "Land",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Earth"
+                                            },
+                                            "Second": {
+                                              "name": "Earth"
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "Second": {
+                                        "name": "Earth"
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          },
+                          "Second": {
+                            "name": "Fire"
+                          }
+                        }
+                      ]
+                    },
+                    "Second": {
+                      "name": "Moon",
+                      "children": [
+                        {
+                          "First": {
+                            "name": "Stone",
+                            "children": [
+                              {
+                                "First": {
+                                  "name": "Earth"
+                                },
+                                "Second": {
+                                  "name": "Pressure",
+                                  "children": [
+                                    {
+                                      "First": {
+                                        "name": "Air"
+                                      },
+                                      "Second": {
+                                        "name": "Air"
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              {
+                                "First": {
+                                  "name": "Air"
+                                },
+                                "Second": {
+                                  "name": "Lava",
+                                  "children": [
+                                    {
+                                      "First": {
+                                        "name": "Earth"
+                                      },
+                                      "Second": {
+                                        "name": "Fire"
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          },
+                          "Second": {
+                            "name": "Planet",
+                            "children": [
+                              {
+                                "First": {
+                                  "name": "Continent",
+                                  "children": [
+                                    {
+                                      "First": {
+                                        "name": "Land",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Earth"
+                                            },
+                                            "Second": {
+                                              "name": "Earth"
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "Second": {
+                                        "name": "Land",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Earth"
+                                            },
+                                            "Second": {
+                                              "name": "Earth"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    {
+                                      "First": {
+                                        "name": "Land",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Earth"
+                                            },
+                                            "Second": {
+                                              "name": "Earth"
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "Second": {
+                                        "name": "Earth"
+                                      }
+                                    }
+                                  ]
+                                },
+                                "Second": {
+                                  "name": "Continent",
+                                  "children": [
+                                    {
+                                      "First": {
+                                        "name": "Land",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Earth"
+                                            },
+                                            "Second": {
+                                              "name": "Earth"
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "Second": {
+                                        "name": "Land",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Earth"
+                                            },
+                                            "Second": {
+                                              "name": "Earth"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    {
+                                      "First": {
+                                        "name": "Land",
+                                        "children": [
+                                          {
+                                            "First": {
+                                              "name": "Earth"
+                                            },
+                                            "Second": {
+                                              "name": "Earth"
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "Second": {
+                                        "name": "Earth"
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "Second": {
+          "name": "Water"
+        }
+      }
+    ]
+  }
+}
