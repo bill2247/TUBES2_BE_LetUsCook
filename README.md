@@ -60,3 +60,10 @@ Untuk menjalankan back end, gunakan command
 ``` sh
 go run main.go
 ```
+
+## Alternatif Penggunaan dengan Docker
+Untuk menjalankan website menggunakan docker,lakukan langkah-langkah berikut
+1. Unduh docker desktop pada perangkat Anda
+2. Clone repositori frontend dan backend pada satu root directory yang sama
+3. Pindahkan file docker-compose.txt ke root direktori, ubah format file menjadi docker.compose.yml
+4. Setelah itu jalanan docker dengan menjalankan command ```docker compose up --build```
