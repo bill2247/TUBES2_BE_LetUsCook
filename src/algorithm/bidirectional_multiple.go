@@ -7,51 +7,47 @@ import(
 )
 
 func BidirectionalMultiple(targetURL string, bound int) (*data_type.RecipeTree, int) {
-	countRecipe := 0
-	AllRecipes := [][]Path_element{}
 	targetIdx, ok := scrapping.MapperNameToIdx[targetURL]
 	if !ok || targetIdx == -1 {
 		fmt.Println("Error: Invalid target URL")
 		return nil, 0
 	}
-
+	
 	tier := scrapping.MapperIdxToTier[targetIdx]
 	if tier == -1 || tier == 0 {
 		return &data_type.RecipeTree{Name: scrapping.MapperIdxToName[targetIdx], Children: nil}, 1
 	}
-
+	
+	countRecipe := 0
+	var allRecipes = [][]Path_element{}
 	ForwardQueue := [][]Path_element{}
 	BackwardQueue := [][]Path_element{}
-	ForwardVisited := make(map[int][][]Path_element) // ForwardVisited[x] menyimpan path yang menghasilkan x dari elemen dasar (ForwardVisited[x][].last() != x karena akan menghasilkan x)
-	BackwardVisited := make(map[data_type.Recipe][][]Path_element) // BackwardVisited[(x,y)] menyimpan path yang dimulai dari pair (x,y) hingga menghasilkan targetIdx
+	ForwardVisited := make(map[int][]Path_element) // ForwardVisited[x] menyimpan path yang menghasilkan x dari elemen dasar (ForwardVisited[x][].last() != x karena akan menghasilkan x)
+	BackwardVisited := make(map[int][]Path_element) // BackwardVisited[(x,y)] menyimpan path yang dimulai dari pair (x,y) hingga menghasilkan targetIdx
 	
+	recipeMap:= scrapping.MapperPairToIdxs
+	reverseMap := scrapping.MapperIdxToRecipes
 	nodeCount := 0
 
-	for i:= 0; i <= 4; i++ {
-		for j:=0; j <= 4; j++ {
-			x1 := data_type.Recipe{First: i, Second: j}
-			x2 := data_type.Recipe{First: j, Second: i}
-			if scrapping.MapperPairToIdxs[x1] != nil || scrapping.MapperPairToIdxs[x2] != nil {
-				result := scrapping.MapperPairToIdxs[data_type.Recipe{First: i, Second: j}]
-				r1 := Path_element{Idx: i, Result: []int{i}}
-				r2 := Path_element{Idx: j, Result: result}
-				ForwardQueue = append(ForwardQueue,[]Path_element{r1, r2})
-				ForwardVisited[i] = [][]Path_element{{r1}}
-				ForwardVisited[j] = [][]Path_element{{r2}}
-				for _, v := range result {
-					ForwardVisited[v] = [][]Path_element{{r1, r2}}
-				}
+	for i:=0; i<4; i++{
+		if recipeMap[i] != nil {
+			for key, val := range recipeMap[i] {
+				result := val
+				r1 := Path_element{Idx: i, Result: i}
+				r2 := Path_element{Idx: key, Result: result}
+				ForwardQueue = append(ForwardQueue, []Path_element{r1, r2})
+				ForwardVisited[i] = []Path_element{r1}
+				ForwardVisited[key] = []Path_element{r2}
+				ForwardVisited[result] = []Path_element{r1, r2}
 				nodeCount += 2
 			}
 		}
 	}
 
-	targetElmt := Path_element{Idx: targetIdx, Result: []int{targetIdx}}
+	targetElmt := Path_element{Idx: targetIdx, Result: targetIdx}
 	BackwardQueue = append(BackwardQueue, []Path_element{targetElmt})
 	nodeCount += 1
 
-	recipeMap:= scrapping.MapperPairToIdxs
-	reverseMap := scrapping.MapperIdxToRecipes
 
 	for len(ForwardQueue) > 0 && len(BackwardQueue) > 0 {
 		// Proses Forward
@@ -59,181 +55,86 @@ func BidirectionalMultiple(targetURL string, bound int) (*data_type.RecipeTree, 
 		ForwardQueue = ForwardQueue[1:]
 		fwdlast := ForwardPath[len(ForwardPath)-1]
 		fwdlastRes := fwdlast.Result
-
-		// Traversal recipeMap juga traversal fwdlastRes. 
-		// Jika fwdlastRes[i] ada di recipeMap, maka dilakukan:
-		// 1. Edit Result dari Path_element fwdlast menjadi tunggal yaitu fwdlastRes[i]
-		// 3. Copy ForwardPath ke tempForwardPath, hapus elemen terakhir,
-		// 4. bangan nextPathElmt yaitu Path_element{Idx: k.Second, Result: res}
-		// 5. Append tempForwardPath dengan newPathElmt dan nextPathElmt
-		// 6. Append tempForwardPath ke ForwardQueue
-		// 7. Untuk setiap elemen di res, tambahkan ForwardPath ke ForwardVisited[res[i]]
-
-		for k, res := range recipeMap {
-			for i := 0; i < len(fwdlastRes); i++ {
-				if fwdlastRes[i] == k.First{
-					newPathElmt := Path_element{Idx: fwdlast.Idx, Result: []int{fwdlastRes[i]}}
-					nextPathElmt := Path_element{Idx: k.Second, Result: res}
-					tempForwardPath := ForwardPath[:len(ForwardPath)-1] 
-					tempForwardPath = append(tempForwardPath, newPathElmt, nextPathElmt)
-					ForwardQueue = append(ForwardQueue, tempForwardPath)
-					nodeCount ++
-					for _, v := range res {
-						ForwardVisited[v] = append(ForwardVisited[v], ForwardPath)
-						for pair, paths := range BackwardVisited {
-							if pair.First == v {
-								FinalPaths := [][]Path_element{}
-								for i := 0; i < len(paths); i++ {
-									FinalPath := []Path_element{}
-									FinalPath = append(FinalPath, ForwardPath...)
-									FinalPath = append(FinalPath, reversePath(paths[i])...)
-									FinalPaths = append(FinalPaths, FinalPath)
-								}
-								// cari path terpendek
-								if len(FinalPaths) > 0 {
-									minPath := FinalPaths[0]
-									for _, p := range FinalPaths {
-										if len(p) < len(minPath) {
-											minPath = p
-										}
-									}
-									// print path
-									fmt.Println("Found path:")
-									for _, elmt := range minPath {
-										fmt.Printf("%d ", elmt.Idx)
-									}
-									fmt.Println()
-									AllRecipes = append(AllRecipes, minPath)
-									countRecipe++
-									if countRecipe >= bound {
-										break
-									}
-								}
-							}
-						}
-					}
-
-				} else if fwdlastRes[i] == k.Second {
-					newPathElmt := Path_element{Idx: fwdlast.Idx, Result: []int{fwdlastRes[i]}}
-					nextPathElmt := Path_element{Idx: k.First, Result: res}
-					tempForwardPath := ForwardPath[:len(ForwardPath)-1]
-					tempForwardPath = append(tempForwardPath, newPathElmt, nextPathElmt)
-					ForwardQueue = append(ForwardQueue, tempForwardPath)
-					nodeCount ++
-					for _, v := range res {
-						ForwardVisited[v] = append(ForwardVisited[v], ForwardPath)
-						for pair, paths := range BackwardVisited {
-							if pair.Second == v {
-								FinalPaths := [][]Path_element{}
-								for i := 0; i < len(paths); i++ {
-									FinalPath := []Path_element{}
-									FinalPath = append(FinalPath, ForwardPath...)
-									FinalPath = append(FinalPath, reversePath(paths[i])...)
-									FinalPaths = append(FinalPaths, FinalPath)
-								}
-								// cari path terpendek
-								if len(FinalPaths) > 0 {
-									minPath := FinalPaths[0]
-									for _, p := range FinalPaths {
-										if len(p) < len(minPath) {
-											minPath = p
-										}
-									}
-									// print path
-									fmt.Println("Found path:")
-									for _, elmt := range minPath {
-										fmt.Printf("%d ", elmt.Idx)
-									}
-									fmt.Println()
-									AllRecipes = append(AllRecipes, minPath)
-									countRecipe++
-									if countRecipe >= bound {
-										break
-									}
-								}
-							}
-						}
-					}
-				} else {
-					continue
-				}
+		nextElmts := recipeMap[fwdlastRes]
+		for key, res := range nextElmts {
+			if _, visited := ForwardVisited[res]; visited {
+				continue 
 			}
-		}
-
-		// Proses Backward
-		BackwardPath := BackwardQueue[0]
-		BackwardQueue = BackwardQueue[1:]
-		bwdlast := BackwardPath[len(BackwardPath)-1]
-		bwdlastIdx := bwdlast.Idx
-
-		recipes := reverseMap[bwdlastIdx]
-		for _, recipe := range recipes {
-			// recipe = (first, second)
-			// Jika path saat ini adalah {X} - currentElmt
-			// Update path menjadi {X} - fisrt - second
-			firstPathElmt := Path_element{Idx: recipe.First, Result: []int{bwdlastIdx}}
-			secondPathElmt := Path_element{Idx: recipe.Second, Result: []int{bwdlastIdx}}
-			firstPathElmtBasic := Path_element{Idx: recipe.First, Result: []int{recipe.First}}
-			secondPathElmtBasic := Path_element{Idx: recipe.Second, Result: []int{recipe.Second}}
-			newBackwardPath := BackwardPath[:len(BackwardPath)-1]
-			newBackwardPath = append(newBackwardPath, firstPathElmt, secondPathElmtBasic)
-			newBackwardPath = append(newBackwardPath, secondPathElmt, firstPathElmtBasic)
-			BackwardQueue = append(BackwardQueue, newBackwardPath)
-			nodeCount += 2
-			// Update BackwardVisited
-			BackwardVisited[recipe] = append(BackwardVisited[recipe], newBackwardPath)
-			// cek apakah ForwardVisited[recipe.First] atau ForwardVisited[recipe.Second] ada yang sama dengan BackwardVisited[recipe]
-			FinalPaths := [][]Path_element{}
-			for i := 0; i < len(ForwardVisited[recipe.First]); i++ {
-				for j := 0; j < len(BackwardVisited[recipe]); j++ {
-					FinalPath := []Path_element{}
-					FinalPath = append(FinalPath, ForwardVisited[recipe.First][i]...)
-					FinalPath = append(FinalPath, reversePath(BackwardVisited[recipe][j])...)
-					FinalPaths = append(FinalPaths, FinalPath)
-				}
-			}
-			for i := 0; i < len(ForwardVisited[recipe.Second]); i++ {
-				for j := 0; j < len(BackwardVisited[recipe]); j++ {
-					FinalPath := []Path_element{}
-					FinalPath = append(FinalPath, ForwardVisited[recipe.Second][i]...)
-					FinalPath = append(FinalPath, reversePath(BackwardVisited[recipe][j])...)
-					FinalPaths = append(FinalPaths, FinalPath)
-				}
-			}
-			// cari path terpendek
-			if len(FinalPaths) > 0 {
-				minPath := FinalPaths[0]
-				for _, p := range FinalPaths {
-					if len(p) < len(minPath) {
-						minPath = p
-					}
-				}
-				// print path
-				fmt.Println("Found path:")
-				for _, elmt := range minPath {
-					fmt.Printf("%d ", elmt.Idx)
-				}
-				fmt.Println()
-				AllRecipes = append(AllRecipes, minPath)
-				countRecipe++
-				if countRecipe >= bound {
+			nextPathElmt := Path_element{Idx: key, Result: res}
+			tempForwardPath := append(ForwardPath, nextPathElmt)
+			ForwardQueue = append(ForwardQueue, tempForwardPath)
+			ForwardVisited[res] = tempForwardPath
+			nodeCount ++
+			if BackwardVisited[res] != nil {
+				finalPath := []Path_element{}
+				finalPath = append(finalPath, ForwardPath...)
+				finalPath = append(finalPath, reversePath(BackwardVisited[res])...)
+				allRecipes = append(allRecipes, finalPath)
+				countRecipe ++
+				if (countRecipe >= bound){
 					break
 				}
 			}
 		}
-		
+
+		// Backward process
+		BackwardPath := BackwardQueue[0]
+		BackwardQueue = BackwardQueue[1:]
+		bwdlast := BackwardPath[len(BackwardPath)-1]
+		bwdlastIdx := bwdlast.Idx
+		recipes := reverseMap[bwdlastIdx]
+		for _, recipe := range recipes {
+	    	if _, visited1 := BackwardVisited[recipe.First]; visited1 {
+				continue
+			}
+			if _, visited2 := BackwardVisited[recipe.Second]; visited2 {
+				continue
+    		}
+			firstPathElmt := Path_element{Idx: recipe.First, Result: bwdlastIdx}
+			secondPathElmt := Path_element{Idx: recipe.Second, Result: bwdlastIdx}
+			firstPathElmtBasic := Path_element{Idx: recipe.First, Result: recipe.First}
+			secondPathElmtBasic := Path_element{Idx: recipe.Second, Result: recipe.Second}
+			newBackwardPath := BackwardPath[:len(BackwardPath)-1]
+			newBackwardPath1 := append(newBackwardPath, firstPathElmt, secondPathElmtBasic)
+			newBackwardPath2 := append(newBackwardPath, secondPathElmt, firstPathElmtBasic)
+			BackwardQueue = append(BackwardQueue, newBackwardPath1)
+			BackwardQueue = append(BackwardQueue, newBackwardPath2)
+			BackwardVisited[recipe.Second] = append(BackwardVisited[recipe.Second], newBackwardPath1...)
+			BackwardVisited[recipe.First] = append(BackwardVisited[recipe.First], newBackwardPath2...)
+			nodeCount += 2
+			if ForwardVisited[recipe.First] != nil {
+				finalPath := []Path_element{}
+				finalPath = append(finalPath, ForwardVisited[recipe.First]...)
+				finalPath = append(finalPath, newBackwardPath2...)
+				allRecipes = append(allRecipes, finalPath)
+				countRecipe ++
+				if (countRecipe >= bound){
+					break
+				}
+			}
+			if ForwardVisited[recipe.Second] != nil {
+				finalPath := []Path_element{}
+				finalPath = append(finalPath, ForwardVisited[recipe.Second]...)
+				finalPath = append(finalPath, newBackwardPath1...)
+				allRecipes = append(allRecipes, finalPath)
+				countRecipe ++
+				if (countRecipe >= bound){
+					break
+				}
+			}
+		}
 	}
-	if (len(AllRecipes) == 0) {
+	
+	if (len(allRecipes) == 0) {
 		return nil, 0
 	}
-	baseRoot := pathTotree(AllRecipes[0])
-	for i := 1; i < len(AllRecipes); i++ {
-		combinePathToRoot(baseRoot, AllRecipes[i], false)
+	baseRoot := pathTotree(allRecipes[0])
+	for i := 1; i < len(allRecipes); i++ {
+		combinePathToRoot(baseRoot, allRecipes[i], false)
 	}
 	baseRoot, newNodeCount := completeTheRoot(baseRoot)
 	nodeCount += newNodeCount
 	return baseRoot, nodeCount
-
 }	
 
 func combinePathToRoot(root *data_type.RecipeTree, recipe []Path_element, done bool) {
