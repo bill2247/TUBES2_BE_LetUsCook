@@ -19,9 +19,10 @@ func FindShortestPath(targetURL string) (*data_type.RecipeTree, int) {
 		idx      int
 		node     *data_type.RecipeTree
 		distance int
+		path     map[int]bool // track elemen dalam path saat ini
 	}
 	tier := scrapping.MapperIdxToTier[targetIdx]
-	if tier == -1 || tier == 0{
+	if tier == -1 || tier == 0 {
 		return &data_type.RecipeTree{Name: scrapping.MapperIdxToName[targetIdx], Children: nil}, 1
 	}
 
@@ -31,7 +32,10 @@ func FindShortestPath(targetURL string) (*data_type.RecipeTree, int) {
 	root := &data_type.RecipeTree{Name: scrapping.MapperIdxToName[targetIdx]}
 	
 	// inisialisasi queue dengan target resep
-	queue := []queueItem{{idx: targetIdx, node: root, distance: 0}}
+	initialPath := make(map[int]bool)
+	initialPath[targetIdx] = true // tandai target sebagai bagian dari path
+	
+	queue := []queueItem{{idx: targetIdx, node: root, distance: 0, path: initialPath}}
 	visited[targetIdx] = 0
 	
 	// map untuk menyimpan resep terbaik untuk setiap elemen
@@ -44,10 +48,10 @@ func FindShortestPath(targetURL string) (*data_type.RecipeTree, int) {
 		current := queue[0]
 		queue = queue[1:]
 		
-		
 		currentIdx := current.idx
 		currentNode := current.node
 		currentDistance := current.distance
+		currentPath := current.path
 		
 		// jika sudah mencapai elemen dasar, stop
 		if currentIdx <= 4 {
@@ -61,19 +65,29 @@ func FindShortestPath(targetURL string) (*data_type.RecipeTree, int) {
 			continue
 		}
 		
-		// temukan resep terbaik (yang menggunakan elemen paling dasar)
+		// temukan resep terbaik (yang menggunakan elemen dari tier yang lebih rendah)
 		var bestRecipe *data_type.Recipe
 		bestScore := -1
+		
+		currentTier := scrapping.MapperIdxToTier[currentIdx]
 		
 		for _, recipe := range recipes {
 			firstIdx := recipe.First
 			secondIdx := recipe.Second
-
-			currentTier := scrapping.MapperIdxToTier[currentIdx]
-			if currentTier < scrapping.MapperIdxToTier[firstIdx] || currentTier < scrapping.MapperIdxToTier[secondIdx] {
+			
+			firstTier := scrapping.MapperIdxToTier[firstIdx]
+			secondTier := scrapping.MapperIdxToTier[secondIdx]
+			
+			// pastikan kedua bahan berasal dari tier yang lebih rendah
+			if firstTier >= currentTier || secondTier >= currentTier {
 				continue
 			}
-	
+			
+			// mencegah siklus dan mencegah menggunakan elemen target sebagai bahan
+			if currentPath[firstIdx] || currentPath[secondIdx] {
+				continue
+			}
+			
 			// hitung skor resep (prioritaskan elemen dasar)
 			score := 0
 			if firstIdx <= 4 {
@@ -108,17 +122,29 @@ func FindShortestPath(targetURL string) (*data_type.RecipeTree, int) {
 		pair := &data_type.Pair_recipe{First: firstNode, Second: secondNode}
 		currentNode.Children = append(currentNode.Children, pair)
 		
-		// tambahkan ke queue untuk penelusuran lebih lanjut jika belum dikunjungi atau jalur lebih pendek
 		newDistance := currentDistance + 1
+		
+		// buat copy dari path saat ini untuk digunakan di jalur baru
+		newPathFirst := make(map[int]bool)
+		for k, v := range currentPath {
+			newPathFirst[k] = v
+		}
+		newPathFirst[firstIdx] = true
+		
+		newPathSecond := make(map[int]bool)
+		for k, v := range currentPath {
+			newPathSecond[k] = v
+		}
+		newPathSecond[secondIdx] = true
 		
 		if dist, found := visited[firstIdx]; !found || newDistance < dist {
 			visited[firstIdx] = newDistance
-			queue = append(queue, queueItem{idx: firstIdx, node: firstNode, distance: newDistance})
+			queue = append(queue, queueItem{idx: firstIdx, node: firstNode, distance: newDistance, path: newPathFirst})
 		}
 		
 		if dist, found := visited[secondIdx]; !found || newDistance < dist {
 			visited[secondIdx] = newDistance
-			queue = append(queue, queueItem{idx: secondIdx, node: secondNode, distance: newDistance})
+			queue = append(queue, queueItem{idx: secondIdx, node: secondNode, distance: newDistance, path: newPathSecond})
 		}
 	}
 	
