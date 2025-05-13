@@ -17,6 +17,7 @@ var (
 	MapperIdxToName    = make(map[int]string)
 	MapperIdxToTier    = make(map[int]int)
 	MapperIdxToRecipes = make(map[int][]data_type.Recipe)
+	MapperPairToIdxs  = make(map[data_type.Recipe][]int)
 )
 
 // normalizeText membersihkan spasi berlebih dari teks
@@ -144,9 +145,13 @@ func StartScraper() error {
 				}
 				firstIdx, ok1 := MapperNameToIdx[first]
 				secondIdx, ok2 := MapperNameToIdx[second]
-				pair := data_type.Recipe{First: firstIdx, Second: secondIdx}
+				pair1 := data_type.Recipe{First: firstIdx, Second: secondIdx}
+				pair2 := data_type.Recipe{First: secondIdx, Second: firstIdx}
 				if ok1 && ok2 {
-					MapperIdxToRecipes[resultIdx] = append(MapperIdxToRecipes[resultIdx], pair)
+					MapperIdxToRecipes[resultIdx] = append(MapperIdxToRecipes[resultIdx], pair1)
+					MapperPairToIdxs[pair1] = append(MapperPairToIdxs[pair1], resultIdx)
+					MapperPairToIdxs[pair2] = append(MapperPairToIdxs[pair2], resultIdx)
+					
 				}
 			}
 		}

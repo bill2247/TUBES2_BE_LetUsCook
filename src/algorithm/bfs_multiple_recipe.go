@@ -95,7 +95,6 @@ func Bfs_multiple_recipe(url string, bound int) (*data_type.RecipeTree, int) {
 	close(queue)
 
 	PruneNonTerminalParallel(root)
-	PruneNonTerminalParallel(root)
 	newRoot, nodeAddition := completeTheRoot(root)
 	root = newRoot
 	countNode += nodeAddition

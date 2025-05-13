@@ -81,7 +81,7 @@ func main() {
 
 				// hitung durasi
 				startTime := time.Now()
-				tree, count := algorithm.Bfs_multiple_recipe(req.Query, req.CountRicipe)
+				tree, count := algorithm.BidirectionalMultiple(req.Query, req.CountRicipe)
 				duration := time.Since(startTime)
 				if tree == nil {
 					log.Printf("BFS returned nil for query: %s", req.Query)
@@ -111,7 +111,7 @@ func main() {
 				log.Printf("Calling BFS multiple recipe with query: %s", req.Query)
 				// hitung durasi
 				startTime := time.Now()
-				tree, count := algorithm.FindShortestPath(req.Query)
+				tree, count := algorithm.BidirectionalSingle(req.Query)
 				duration := time.Since(startTime)
 
 				if tree == nil {
