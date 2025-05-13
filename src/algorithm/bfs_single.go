@@ -127,11 +127,9 @@ func FindShortestPath(targetURL string) (*data_type.RecipeTree, int) {
 	return optimalPath, visitedCount
 }
 
-// rekonstruksi jalur optimal dari resep terbaik
 func ConstructOptimalPath(targetIdx int, bestRecipes map[int]*data_type.Recipe) *data_type.RecipeTree {
 	root := &data_type.RecipeTree{Name: scrapping.MapperIdxToName[targetIdx]}
 	
-	// DFS untuk membangun pohon resep
 	BuildRecipeTree(root, targetIdx, bestRecipes, make(map[int]bool))
 	
 	return root
@@ -146,7 +144,6 @@ func BuildRecipeTree(node *data_type.RecipeTree, idx int, bestRecipes map[int]*d
 	
 	visited[idx] = true
 	
-	// Dapatkan resep terbaik untuk elemen ini
 	recipe, found := bestRecipes[idx]
 	if !found {
 		return
@@ -159,7 +156,6 @@ func BuildRecipeTree(node *data_type.RecipeTree, idx int, bestRecipes map[int]*d
 	firstNode := &data_type.RecipeTree{Name: scrapping.MapperIdxToName[firstIdx]}
 	secondNode := &data_type.RecipeTree{Name: scrapping.MapperIdxToName[secondIdx]}
 	
-	// tambahkan ke dalam tree
 	pair := &data_type.Pair_recipe{First: firstNode, Second: secondNode}
 	node.Children = append(node.Children, pair)
 	
