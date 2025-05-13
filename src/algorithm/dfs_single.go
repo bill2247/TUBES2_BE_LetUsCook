@@ -37,8 +37,8 @@ func DFSSingle(t *data_type.RecipeTree) {
 }
 
 func DFSSingleEntryPoint(url string) (*data_type.RecipeTree, int) {
-	idx := scrapping.MapperNameToIdx[url]
-	if idx == -1 {
+	idx, ok := scrapping.MapperNameToIdx[url]
+	if idx == -1 || !ok{
 		fmt.Println("Error: Invalid URL")
 		return nil, 0
 	}

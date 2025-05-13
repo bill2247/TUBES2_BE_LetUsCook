@@ -111,8 +111,8 @@ func DFSMultiple(t *data_type.RecipeTree, wg *sync.WaitGroup) int {
 }
 
 func DFSMultipleEntryPoint(url string) (*data_type.RecipeTree, int) {
-	idx := scrapping.MapperNameToIdx[url]
-	if idx == -1 {
+	idx, ok := scrapping.MapperNameToIdx[url]
+	if idx == -1 || !ok{
 		fmt.Println("Error: Invalid URL")
 		return nil, 0
 	}
