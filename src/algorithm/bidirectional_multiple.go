@@ -97,12 +97,6 @@ func BidirectionalMultiple(targetURL string, bound int) (*data_type.RecipeTree, 
 											minPath = p
 										}
 									}
-									// print path
-									fmt.Println("Found path:")
-									for _, elmt := range minPath {
-										fmt.Printf("%d ", elmt.Idx)
-									}
-									fmt.Println()
 									AllRecipes = append(AllRecipes, minPath)
 									countRecipe++
 									if countRecipe >= bound {
@@ -139,12 +133,6 @@ func BidirectionalMultiple(targetURL string, bound int) (*data_type.RecipeTree, 
 											minPath = p
 										}
 									}
-									// print path
-									fmt.Println("Found path:")
-									for _, elmt := range minPath {
-										fmt.Printf("%d ", elmt.Idx)
-									}
-									fmt.Println()
 									AllRecipes = append(AllRecipes, minPath)
 									countRecipe++
 									if countRecipe >= bound {
@@ -208,12 +196,6 @@ func BidirectionalMultiple(targetURL string, bound int) (*data_type.RecipeTree, 
 						minPath = p
 					}
 				}
-				// print path
-				fmt.Println("Found path:")
-				for _, elmt := range minPath {
-					fmt.Printf("%d ", elmt.Idx)
-				}
-				fmt.Println()
 				AllRecipes = append(AllRecipes, minPath)
 				countRecipe++
 				if countRecipe >= bound {

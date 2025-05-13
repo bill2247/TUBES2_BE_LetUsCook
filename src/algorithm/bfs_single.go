@@ -124,7 +124,6 @@ func FindShortestPath(targetURL string) (*data_type.RecipeTree, int) {
 	
 	// rekonstruksi jalur optimal
 	optimalPath := ConstructOptimalPath(targetIdx, bestRecipes)
-	fmt.Printf("Jumlah node yang dikunjungi: %d\n", visitedCount)
 	return optimalPath, visitedCount
 }
 
