@@ -81,7 +81,7 @@ func main() {
 
 				// hitung durasi
 				startTime := time.Now()
-				tree, count := algorithm.BidirectionalMultiple(req.Query, req.CountRicipe)
+				tree, count := algorithm.Bfs_multiple_recipe(req.Query, req.CountRicipe)
 				duration := time.Since(startTime)
 				if tree == nil {
 					log.Printf("BFS returned nil for query: %s", req.Query)
@@ -111,7 +111,7 @@ func main() {
 				log.Printf("Calling BFS multiple recipe with query: %s", req.Query)
 				// hitung durasi
 				startTime := time.Now()
-				tree, count := algorithm.BidirectionalSingle(req.Query)
+				tree, count := algorithm.FindShortestPath(req.Query)
 				duration := time.Since(startTime)
 
 				if tree == nil {
@@ -199,8 +199,66 @@ func main() {
 				}
 			}
 		} else if req.Algorithm == "bidirectional"{
-			if req.Mode == "multiple"{
-				// disini bidirectional
+			if req.Mode == "multiple" {
+				log.Printf("Calling bidirectional multiple recipe with query: %s", req.Query)
+
+				// hitung durasi
+				startTime := time.Now()
+				tree, count := algorithm.BidirectionalMultiple(req.Query, req.CountRicipe)
+				duration := time.Since(startTime)
+				if tree == nil {
+					log.Printf("bidirectional returned nil for query: %s", req.Query)
+					c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to process recipe"})
+					return
+				}
+				result = gin.H{
+					"tree":  tree,
+					"count": count, 
+					"duration": duration.Seconds(),
+				}
+
+				// simpan hasil ke file JSON
+				jsonBytes, err := json.MarshalIndent(result, "", "  ")
+				if err != nil {
+					log.Printf("Gagal mengubah ke JSON: %v", err)
+				} else {
+					err := os.WriteFile("output_recipe.json", jsonBytes, 0644)
+					if err != nil {
+						log.Printf("Gagal menulis file JSON: %v", err)
+					} else {
+						log.Println("Berhasil menyimpan hasil pencarian ke output_recipe.json")
+					}
+				}
+
+			} else {
+				log.Printf("Calling bidirectional single recipe with query: %s", req.Query)
+				// hitung durasi
+				startTime := time.Now()
+				tree, count := algorithm.BidirectionalSingle(req.Query)
+				duration := time.Since(startTime)
+				if tree == nil {
+					log.Printf("bidirectional returned nil for query: %s", req.Query)
+					c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to process recipe"})
+					return
+				}
+				result = gin.H{
+					"tree":  tree,
+					"count": count, 
+					"duration": duration.Seconds(),
+				}
+
+				// simpan hasil ke file JSON
+				jsonBytes, err := json.MarshalIndent(result, "", "  ")
+				if err != nil {
+					log.Printf("Gagal mengubah ke JSON: %v", err)
+				} else {
+					err := os.WriteFile("output_recipe.json", jsonBytes, 0644)
+					if err != nil {
+						log.Printf("Gagal menulis file JSON: %v", err)
+					} else {
+						log.Println("Berhasil menyimpan hasil pencarian ke output_recipe.json")
+					}
+				}
 			}
 		}
 
