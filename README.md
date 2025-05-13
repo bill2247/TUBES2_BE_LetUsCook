@@ -45,3 +45,18 @@ https://let-us-cook-new.vercel.app
 5. Tekan tombol search
 6. Hasil pohon solusi akan ditampilkan beserta dnegan informasi detail node ynag dikunjungi dan durasi
 ![Imgur](https://imgur.com/n7tnAU8.jpg)
+
+Catatan : jika mengalami kendala dalam mengakses website melalui internet, maka website dapat diakses dengan cara menjalankan front end dan back end di lokal.
+Ubah terlebih dahulu tautan yang menghubungkan backend menjadi
+``` sh
+http://localhost:8080/api/search
+```
+Untuk menjalankan front end, masuk ke directory src lalu gunakan command
+``` sh
+npm install
+npm run dev
+```
+Untuk menjalankan back end, gunakan command
+``` sh
+go run main.go
+```
